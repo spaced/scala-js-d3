@@ -3,17 +3,19 @@ scala-js-jquery
 
 Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
+
+Warning
+-------
+Pre-alpha, types and parameters and defaults may not work as expected.
+
+
 Usage
 -----
 
-Add the following to your sbt build definition:
 
-    libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-jquery" % "0.5"
+Enjoy the types available in `org.scalajs.jquery`.
 
-then enjoy the types available in `org.scalajs.jquery`.
-
-scalajs-jquery 0.5 is built and published for Scala.js 0.5.0-M3 and following in
-the 0.5.x series, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.5.x series, with both Scala 2.10 and 2.11.
 
 License
 -------
