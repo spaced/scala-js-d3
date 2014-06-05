@@ -6,14 +6,31 @@ Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
 Warning
 -------
-Pre-alpha, types and parameters and defaults may not work as expected.
+Pre-alpha: types, parameters and defaults may not work as expected.
 
 
 Usage
 -----
+Enjoy the types available in `org.scalajs.jquery`:
+```
+package example
+
+import scala.scalajs.js
+import org.scalajs.dom
+import org.scalajs.d3._
+
+object ScalaJSExample extends js.JSApp {
+
+  def main() {
+    val psel=d3.selectAll("p")    
+    psel.style("color","red")    
+  }
+
+```
+
+more about [d3js.org](http://d3js.org)
 
 
-Enjoy the types available in `org.scalajs.jquery`.
 
 scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.5.x series, with both Scala 2.10 and 2.11.
 
