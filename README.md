@@ -11,7 +11,7 @@ Pre-alpha: types, parameters and defaults may not work as expected.
 
 Usage
 -----
-Enjoy the types available in `org.scalajs.jquery`:
+Enjoy the types available in `org.scalajs.d3`:
 ```
 package example
 
