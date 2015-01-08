@@ -1,4 +1,4 @@
-scala-js-jquery
+scala-js-d3
 ===============
 
 Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
