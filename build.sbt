@@ -1,4 +1,4 @@
-scalaJSSettings
+enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js d3"
 
@@ -6,16 +6,15 @@ normalizedName := "scalajs-d3"
 
 version := "0.1-SNAPSHOT"
 
-//organization := "org.scala-lang.modules.scalajs"
-organization := "org.spaced.modules.scalajs"
+organization := "org.spaced.scalajs"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.5"
 
-crossScalaVersions := Seq("2.10.4", "2.11.1")
+crossScalaVersions := Seq("2.10.4", "2.11.5")
 
 libraryDependencies +=
-  "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
+  "org.scala-js" %%% "scalajs-dom" % "0.8.0"
 
-homepage := Some(url("http://scala-js.org/"))
+homepage := Some(url("https://github.com/spaced/scala-js-d3"))
 
-//licenses += ("BSD New", url("https://github.com/scala-js/scala-js/blob/master/LICENSE"))
+licenses += ("BSD New", url("https://github.com/spaced/scala-js-d3/blob/master/LICENSE"))
