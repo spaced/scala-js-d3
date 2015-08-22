@@ -8,13 +8,20 @@ version := "0.1-SNAPSHOT"
 
 organization := "org.spaced.scalajs"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
-crossScalaVersions := Seq("2.10.4", "2.11.6")
+scalacOptions ++= Seq("-deprecation", "-feature")
+
+crossScalaVersions := Seq("2.10.5", "2.11.7")
 
 libraryDependencies +=
-  "org.scala-js" %%% "scalajs-dom" % "0.8.0"
+  "org.scala-js" %%% "scalajs-dom" % "0.8.1"
 
 homepage := Some(url("https://github.com/spaced/scala-js-d3"))
 
 licenses += ("BSD New", url("https://github.com/spaced/scala-js-d3/blob/master/LICENSE"))
+
+scmInfo := Some(ScmInfo(
+  url("https://github.com/spaced/scala-js-d3"),
+  "scm:git:git@github.com:spaced/scala-js-d3.git",
+  Some("scm:git:git@github.com:spaced/scala-js-d3.git")))
