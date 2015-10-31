@@ -32,12 +32,12 @@ more about [d3js.org](http://d3js.org)
 
 
 
-scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.5.x series, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.6.x series, with both Scala 2.10 and 2.11.
 
 License
 -------
 
-Copyright (c) 2002-2014 
+Copyright (c) 2002-2015
 
 All rights reserved.
 
