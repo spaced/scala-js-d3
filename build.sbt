@@ -18,7 +18,7 @@ crossScalaVersions := Seq("2.10.5", "2.11.7")
 libraryDependencies +=
   "org.scala-js" %%% "scalajs-dom" % "0.8.1"
 
-jsDependencies += "org.webjars" % "d3js" % "3.5.6"
+jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "d3.min.js"
 
 homepage := Some(url("https://github.com/spaced/scala-js-d3"))
 
