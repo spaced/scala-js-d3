@@ -14,14 +14,18 @@ scalacOptions ++= Seq("-deprecation", "-feature")
 
 crossScalaVersions := Seq("2.10.5", "2.11.7")
 
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.2"
 
-libraryDependencies +=
-  "org.scala-js" %%% "scalajs-dom" % "0.8.1"
+jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "3.5.6/d3.min.js"
+jsDependencies += RuntimeDOM
 
-jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "d3.min.js"
+// uTest settings
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
+testFrameworks += new TestFramework("utest.runner.Framework")
+// use phantomjs for tests because d3 lib uses not features not supported by rhino
+scalaJSStage in Global := FastOptStage
 
 homepage := Some(url("https://github.com/spaced/scala-js-d3"))
-
 licenses += ("BSD New", url("https://github.com/spaced/scala-js-d3/blob/master/LICENSE"))
 
 scmInfo := Some(ScmInfo(
