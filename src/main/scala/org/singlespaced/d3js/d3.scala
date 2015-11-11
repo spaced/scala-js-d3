@@ -1,12 +1,11 @@
 
-package org.singlespaced
+package org.singlespaced.d3js
 
 import org.scalajs.dom
-import org.singlespaced.d3modules._
 
 import scala.scalajs.js
-import js.annotation.JSName
-import js.`|`
+import scala.scalajs.js.`|`
+import scala.scalajs.js.annotation.JSName
 
 @JSName("d3")
 @js.native
@@ -135,22 +134,22 @@ object d3 extends js.Object  {
   def locale(definition: LocaleDefinition): Locale = js.native
   //forwarders
 
-  def behavior:d3modules.BehaviorObject=js.native
-  def geo:d3modules.GeoObject=js.native
-  def geom:d3modules.GeomObject=js.native
-  def layout:d3modules.LayoutObject=js.native
+  def behavior:BehaviorObject=js.native
+  def geo:GeoObject=js.native
+  def geom:GeomObject=js.native
+  def layout:LayoutObject=js.native
   //TODO def transition=d3modules.transition
-  def timer:d3modules.TimerObject=js.native
-  def random:d3modules.RandomObject=js.native
-  def rgb:d3modules.RgbObject=js.native
-  def hsl:d3modules.HslObject=js.native
-  def hcl:d3modules.HclObject=js.native
-  def lab:d3modules.LabObject=js.native
-  def color:d3modules.ColorObject=js.native
-  def scale:d3modules.ScaleObject=js.native
-  def ns:d3modules.NsObject=js.native
-  def svg:d3modules.SvgObject=js.native
-  def time:d3modules.TimeObject=js.native
+  def timer:TimerObject=js.native
+  def random:RandomObject=js.native
+  def rgb:RgbObject=js.native
+  def hsl:HslObject=js.native
+  def hcl:HclObject=js.native
+  def lab:LabObject=js.native
+  def color:ColorObject=js.native
+  def scale:ScaleObject=js.native
+  def ns:NsObject=js.native
+  def svg:SvgObject=js.native
+  def time:TimeObject=js.native
 
 
 

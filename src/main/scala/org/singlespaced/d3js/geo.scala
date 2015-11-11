@@ -1,4 +1,4 @@
-package org.singlespaced.d3modules
+package org.singlespaced.d3js
 
 
 
