@@ -5,8 +5,8 @@ import org.scalajs.dom
 import org.singlespaced.d3modules._
 
 import scala.scalajs.js
+import js.annotation.JSName
 import js.`|`
-import scala.scalajs.js.annotation.{ScalaJSDefined, JSName}
 
 @JSName("d3")
 @js.native
