@@ -8,7 +8,7 @@ import scala.scalajs.js.annotation.JSName
 @js.native
 trait GeomObject extends js.Object {
 
-  import geomModule._
+  import geom._
 
   def voronoi(): Voronoi[js.Tuple2[Double, Double]] = js.native
 
@@ -28,7 +28,7 @@ trait GeomObject extends js.Object {
 
 
 }
-package geomModule {
+package geom {
 
 @js.native
 trait Voronoi[T] extends js.Object {

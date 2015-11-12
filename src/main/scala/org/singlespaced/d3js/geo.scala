@@ -10,7 +10,7 @@ import js.`|`
 @JSName("d3.geo")
 @js.native
 trait GeoObject extends js.Object {
-  import geoModule._
+  import geo._
 
   def path(): Path = js.native
 
@@ -74,7 +74,7 @@ trait GeoObject extends js.Object {
   //TODO define forwarders
 
 }
-package geoModule {
+package geo {
   @js.native
   trait Path extends js.Object {
     def apply(feature: js.Any, index: Double): String = js.native

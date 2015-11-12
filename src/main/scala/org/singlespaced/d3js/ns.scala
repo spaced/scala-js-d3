@@ -8,14 +8,14 @@ import scala.scalajs.js.annotation.{JSBracketAccess, JSName}
 @js.native
 trait NsObject extends js.Object {
 
-  import nsModule._
+  import ns._
 
   def qualify(name: String): Qualified | String = js.native
 
   def prefix: PrefixObject = js.native
 
 }
-package nsModule {
+package ns {
 
 @js.native
 trait Qualified extends js.Object {

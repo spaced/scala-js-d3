@@ -13,7 +13,7 @@ trait SelectionObject extends js.Object {
   var prototype: Selection[js.Any] = js.native
 }
 
-package selectionModule {
+package selection {
 
 
 @js.native
@@ -162,7 +162,7 @@ trait Enter[Datum] extends js.Object {
 }
 
 @js.native
-trait Selection[Datum] extends selectionModule.BaseSelection[Datum] {
+trait Selection[Datum] extends selection.BaseSelection[Datum] {
   type T = Selection[Datum]
 
   //def selectAll(selector: String): Selection[js.Any] = js.native

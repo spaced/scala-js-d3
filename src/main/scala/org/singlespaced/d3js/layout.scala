@@ -271,7 +271,7 @@ trait Force[Link <: forceModule.Link[forceModule.Node], Node <: forceModule.Node
 
   def on(`type`: String, listener: js.Function1[forceModule.Event, Unit]): Force[Link, Node] = js.native
 
-  def drag(): behaviorModule.Drag[Node] = js.native
+  def drag(): behavior.Drag[Node] = js.native
 
   def drag(selection: Selection[Node]): Unit = js.native
 }

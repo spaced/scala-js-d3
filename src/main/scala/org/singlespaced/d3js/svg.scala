@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation.JSName
 @js.native
 trait SvgObject extends js.Object {
 
-  import svgModule._
+  import svg._
 
   def line(): Line[js.Tuple2[Double, Double]] = js.native
 
@@ -46,7 +46,7 @@ trait SvgObject extends js.Object {
   //TODO def brush[T](): Brush[T] = js.native
 
 }
-package svgModule {
+package svg {
 
 @js.native
 trait Line[T] extends js.Object {

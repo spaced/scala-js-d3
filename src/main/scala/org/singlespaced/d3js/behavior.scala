@@ -7,12 +7,12 @@ import scala.scalajs.js.annotation.JSName
 @JSName("d3.behavior")
 @js.native
 trait BehaviorObject extends js.Object {
-  def drag[Datum](): behaviorModule.Drag[Datum] = js.native
+  def drag[Datum](): behavior.Drag[Datum] = js.native
 
-  def zoom[Datum](): behaviorModule.Zoom[Datum] = js.native
+  def zoom[Datum](): behavior.Zoom[Datum] = js.native
 
 }
-package behaviorModule {
+package behavior {
 
 @js.native
 trait Drag[Datum] extends js.Object {
@@ -51,13 +51,13 @@ trait Zoom[Datum] extends js.Object {
 
   def size(size: js.Tuple2[Double, Double]): Zoom[Datum] = js.native
 
-  def x(): zoomModule.Scale = js.native
+  def x(): zoom.Scale = js.native
 
-  def x(x: zoomModule.Scale): Zoom[Datum] = js.native
+  def x(x: zoom.Scale): Zoom[Datum] = js.native
 
-  def y(): zoomModule.Scale = js.native
+  def y(): zoom.Scale = js.native
 
-  def y(y: zoomModule.Scale): Zoom[Datum] = js.native
+  def y(y: zoom.Scale): Zoom[Datum] = js.native
 
   def on(`type`: String): js.Function2[Datum, Double, Any] = js.native
 
@@ -68,7 +68,7 @@ trait Zoom[Datum] extends js.Object {
   def event(transition: Transition[Datum]): Unit = js.native
 }
 
-package zoomModule {
+package zoom {
 
 
 @js.native

@@ -2,7 +2,7 @@ package org.singlespaced.d3js
 
 import org.scalajs.dom
 import org.singlespaced.d3js
-import org.singlespaced.d3js.d3.Primitive
+import d3js.d3.Primitive
 import utest._
 
 import scala.scalajs.js
@@ -26,7 +26,7 @@ object D3Test extends TestSuite {
     //  assert(elem.classList.contains("myclass"))
     }
     'd3_selection_attrfunx_update {
-      import d3js.selectionModule.Obs._
+      import d3js.selection.Obs._
       val f3= (d:Int) => (d*2).asInstanceOf[Primitive]
       val tt=sel.attr("tabindex", f3 )
     }

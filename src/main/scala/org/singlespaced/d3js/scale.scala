@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation._
 @js.native
 trait ScaleObject extends js.Object {
 
-  import scaleModule._
+  import scale._
 
   def identity(): Identity = js.native
 
@@ -50,7 +50,7 @@ trait ScaleObject extends js.Object {
 
   //TODO def category20c[Domain](): Ordinal[Domain, String] = js.native
 }
-package scaleModule {
+package scale {
 
 @js.native
 trait Identity extends js.Object {
