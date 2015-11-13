@@ -3,6 +3,11 @@ scala-js-d3
 
 Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
+Release 0.0.1
+-------------
+- Strongly typed with tuples, dictionaries and functions
+- Ops implicits
+
 
 Warning
 -------
@@ -17,13 +22,13 @@ package example
 
 import scala.scalajs.js
 import org.scalajs.dom
-import org.scalajs.d3._
+import org.singlespaced.d3js._
 
 object ScalaJSExample extends js.JSApp {
 
   def main() {
-    val psel=d3.selectAll("p")    
-    psel.style("color","red")    
+    val sel=d3.selectAll("div").data(js.Array(5,2,4,6))
+    sel.style("width", (d:Int) => d*2 )
   }
 
 ```
@@ -32,7 +37,7 @@ more about [d3js.org](http://d3js.org)
 
 
 
-scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.6.x series, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
 
 License
 -------
