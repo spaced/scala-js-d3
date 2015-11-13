@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.language.implicitConversions
 
 
-object D3DatumObs {
+object Obs {
 
   @inline implicit def fromFunction1To3StringPrimitive[Datum](value: Datum => String): js.Function3[Datum, Int, Int, Primitive] =
     fromFunction1To3( value.andThen( _.asInstanceOf[Primitive]) )
