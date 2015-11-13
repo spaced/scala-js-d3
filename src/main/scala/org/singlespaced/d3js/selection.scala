@@ -21,16 +21,7 @@ trait Group extends js.Array[dom.EventTarget] {
   var parentNode: dom.EventTarget = js.native
 }
 
-object Obs {
-  @inline implicit def fromFunction1To3[Datum,M](value: scala.Function1[Datum,M]): js.Function3[Datum,Int,Int,M]= {
-    val scalafun = (d:Datum, i:Int, x:Int) => value.apply(d)
-    js.Any.fromFunction3[Datum,Int,Int,M](scalafun)
-  }
-  @inline implicit def fromFunction2To3[Datum,M](value: scala.Function2[Datum,Int,M]): js.Function3[Datum,Int,Int,M]= {
-    val scalafun = (d:Datum, i:Int, x:Int) => value.apply(d,i)
-    js.Any.fromFunction3[Datum,Int,Int,M](scalafun)
-  }
-}
+
 
 @js.native
 trait BaseSelection[Datum] extends js.Object {
