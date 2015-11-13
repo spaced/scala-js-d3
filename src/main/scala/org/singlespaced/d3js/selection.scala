@@ -42,7 +42,6 @@ trait BaseSelection[Datum] extends js.Object {
   def attr(name: String, value: Primitive): T = js.native
   def attr(name: String, value: DatumFunction[Primitive]): T = js.native
   def attr(obj: js.Dictionary[SelfOrDatumFunction[Primitive]]): T = js.native
-  def attr(name: String, f:js.Function1[Datum,Boolean]): T = js.native
 
   def classed(name: String): Boolean = js.native
   def classed(name: String, value: Boolean): T = js.native
