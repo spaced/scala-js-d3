@@ -24,11 +24,8 @@ trait Group extends js.Array[dom.EventTarget] {
 
 
 @js.native
-trait BaseSelection[Datum] extends js.Object {
+trait BaseSelection[Datum] extends BaseDom[Datum] {
   type T<: BaseSelection[Datum]
-
-  type DatumFunction[M]=js.Function3[Datum, Int, Int, M]
-  type SelfOrDatumFunction[M]=M | js.Function3[Datum, Int, Int, M]
 
   var length: Double = js.native
 
@@ -39,9 +36,6 @@ trait BaseSelection[Datum] extends js.Object {
   def update(index: Double, v: Group): Unit = js.native
 
   def attr(name: String): String = js.native
-  def attr(name: String, value: Primitive): T = js.native
-  def attr(name: String, value: DatumFunction[Primitive]): T = js.native
-  def attr(obj: js.Dictionary[SelfOrDatumFunction[Primitive]]): T = js.native
 
   def classed(name: String): Boolean = js.native
   def classed(name: String, value: Boolean): T = js.native
@@ -49,9 +43,6 @@ trait BaseSelection[Datum] extends js.Object {
   def classed(obj: js.Dictionary[SelfOrDatumFunction[Boolean]]): T = js.native
 
   def style(name: String): String = js.native
-  def style(name: String, value: Primitive): T = js.native
-  def style(name: String, value: Primitive,priority: String): T = js.native
-  def style(name: String, value: DatumFunction[Primitive], priority: String = ???): T = js.native
 
   def style(obj: js.Dictionary[SelfOrDatumFunction[Primitive]], priority: String ): T = js.native
 
@@ -61,8 +52,6 @@ trait BaseSelection[Datum] extends js.Object {
   def property(obj: js.Dictionary[SelfOrDatumFunction[Any]]): T = js.native
 
   def text(): String = js.native
-  def text(value: Primitive): T = js.native
-  def text(value: DatumFunction[Primitive]): T = js.native
 
   def html(): String = js.native
   def html(value: String): T = js.native
@@ -76,14 +65,11 @@ trait BaseSelection[Datum] extends js.Object {
   def insert(name: DatumFunction[dom.EventTarget], before: String): T = js.native
   def insert(name: DatumFunction[dom.EventTarget], before: DatumFunction[dom.EventTarget]): T = js.native
 
-  def remove(): T = js.native
-
   def data(): js.Array[Datum] = js.native
   def data[NewDatum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
   def data[NewDatum](data: js.Array[NewDatum], key: js.Function3[NewDatum, Double, Double, String]): Update[NewDatum] = js.native
   def data[NewDatum](data: DatumFunction[js.Array[NewDatum]], key: js.Function3[NewDatum, Double, Double, String]): Update[NewDatum] = js.native
 
-  def filter(selector: String): T = js.native
   def filter(selector: DatumFunction[Boolean]): T = js.native
 
   def datum(): Datum = js.native
@@ -105,14 +91,6 @@ trait BaseSelection[Datum] extends js.Object {
   def select(selector: DatumFunction[dom.EventTarget]): T = js.native
 
   def each(func: DatumFunction[js.Any]): T = js.native
-
-  def call(func: js.Function, args: js.Any*): T = js.native
-
-  def empty(): Boolean = js.native
-
-  def node(): dom.EventTarget = js.native
-
-  def size(): Double = js.native
 
 }
 

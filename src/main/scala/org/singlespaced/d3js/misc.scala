@@ -23,20 +23,55 @@ trait TransitionObject extends js.Object {
 
 
 @js.native
-trait Transition[Datum] extends js.Object {
+trait BaseDom[Datum] extends js.Object {
+  type T<: BaseDom[Datum]
+
+  type DatumFunction[M]=js.Function3[Datum, Int, Int, M]
+  type SelfOrDatumFunction[M]=M | js.Function3[Datum, Int, Int, M]
+
+  def attr(name: String, value: Primitive): T = js.native
+  def attr(name: String, value: DatumFunction[Primitive]): T = js.native
+  def attr(obj: js.Dictionary[SelfOrDatumFunction[Primitive]]): T = js.native
+
+  def style(name: String, value: Primitive): T = js.native
+  def style(name: String, value: Primitive,priority: String): T = js.native
+  def style(name: String, value: DatumFunction[Primitive], priority: String = ???): T = js.native
+
+  def text(value: Primitive): T = js.native
+  def text(value: DatumFunction[Primitive]): T = js.native
+
+  def filter(selector: String): T = js.native
+
+  def remove(): T = js.native
+
+  def empty(): Boolean = js.native
+
+  def call(func: js.Function, args: js.Any*): T = js.native
+
+  def node(): dom.EventTarget = js.native
+
+  def size(): Double = js.native
+}
+
+
+
+@js.native
+trait Transition[Datum] extends BaseDom[Datum] {
+  type T=Transition[Datum]
+
   def transition(): Transition[Datum] = js.native
 
   def delay(): Double = js.native
 
   def delay(delay: Double): Transition[Datum] = js.native
 
-  def delay(delay: js.Function3[Datum, Double, Double, Double]): Transition[Datum] = js.native
+  def delay(delay: DatumFunction[Double]): Transition[Datum] = js.native
 
   def duration(): Double = js.native
 
   def duration(duration: Double): Transition[Datum] = js.native
 
-  def duration(duration: js.Function3[Datum, Double, Double, Double]): Transition[Datum] = js.native
+  def duration(duration: DatumFunction[Double]): Transition[Datum] = js.native
 
   def ease(): js.Function1[Double, Double] = js.native
 
@@ -44,29 +79,11 @@ trait Transition[Datum] extends js.Object {
 
   def ease(value: js.Function1[Double, Double]): Transition[Datum] = js.native
 
-  def attr(name: String, value: Primitive): Transition[Datum] = js.native
-
-  def attr(name: String, value: js.Function3[Datum, Double, Double, Primitive]): Transition[Datum] = js.native
-
-  def attr(obj: js.Dictionary[Primitive | js.Function3[Datum, Double, Double, Primitive]]): Transition[Datum] = js.native
-
   def attrTween(name: String, tween: js.Function3[Datum, Double, String, js.Function1[Double, Primitive]]): Transition[Datum] = js.native
 
-  def style(name: String, value: Primitive, priority: String): Transition[Datum] = js.native
-
-  def style(name: String, value: js.Function3[Datum, Double, Double, Primitive], priority: String): Transition[Datum] = js.native
-
-  def style(obj: js.Dictionary[Primitive | js.Function3[Datum, Double, Double, Primitive]], priority: String): Transition[Datum] = js.native
-
-  def styleTween(name: String, tween: js.Function3[Datum, Double, String, js.Function1[Double, Primitive]], priority: String = null): Transition[Datum] = js.native
-
-  def text(value: Primitive): Transition[Datum] = js.native
-
-  def text(value: js.Function3[Datum, Double, Double, Primitive]): Transition[Datum] = js.native
+  def styleTween(name: String, tween: js.Function3[Datum, Double, String, js.Function1[Double, Primitive]], priority: String = ???): Transition[Datum] = js.native
 
   def tween(name: String, factory: js.Function0[js.Function1[Double, Any]]): Transition[Datum] = js.native
-
-  def remove(): Transition[Datum] = js.native
 
   def select(selector: String): Transition[Datum] = js.native
 
@@ -76,21 +93,12 @@ trait Transition[Datum] extends js.Object {
 
   def selectAll(selector: js.Function2[Datum, Double, js.Array[dom.EventTarget]]): Transition[js.Any] = js.native
 
-  def filter(selector: String): Transition[Datum] = js.native
-
   def filter(selector: js.Function2[Datum, Double, Boolean]): Transition[Datum] = js.native
 
   def each(`type`: String, listener: js.Function2[Datum, Double, Any]): Transition[Datum] = js.native
 
   def each(listener: js.Function2[Datum, Double, Any]): Transition[Datum] = js.native
 
-  def call(func: js.Function, args: js.Any*): Transition[Datum] = js.native
-
-  def empty(): Boolean = js.native
-
-  def node(): dom.EventTarget = js.native
-
-  def size(): Double = js.native
 }
 
 @JSName("d3.timer")
