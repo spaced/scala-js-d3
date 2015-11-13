@@ -1,7 +1,7 @@
 package org.singlespaced.d3js
 
 import org.scalajs.dom
-import org.singlespaced.d3js.Obs._
+import org.singlespaced.d3js.Ops._
 import org.singlespaced.d3js.d3.Primitive
 import utest._
 
