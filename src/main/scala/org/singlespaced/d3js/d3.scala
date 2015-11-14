@@ -18,7 +18,7 @@ object d3 extends js.Object  {
   def select(selector: String): Selection[dom.Element] = js.native
   def select(node: dom.EventTarget): Selection[dom.Element] = js.native
   def selectAll(selector: String): Selection[dom.Element] = js.native
-  def selectAll(nodes: js.Array[dom.EventTarget]): Selection[dom.Element] = js.native
+  def selectAll(nodes: js.Array[dom.EventTarget]): Selection[dom.EventTarget] = js.native
   def selection(): Selection[dom.Element] = js.native
   def transition(): Transition[dom.Element] = js.native
   def ease(`type`: String, args: js.Any*): js.Function1[Double, Double] = js.native
