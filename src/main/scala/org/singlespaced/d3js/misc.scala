@@ -57,7 +57,7 @@ trait BaseDom[Datum] extends js.Object {
 
 @js.native
 trait Transition[Datum] extends BaseDom[Datum] {
-  type T=Transition[Datum]
+  override type T=Transition[Datum]
 
   def transition(): Transition[Datum] = js.native
 
