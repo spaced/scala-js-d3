@@ -24,8 +24,7 @@ trait Group extends js.Array[dom.EventTarget] {
 
 
 @js.native
-trait BaseSelection[Datum] extends BaseDom[Datum] {
-  override type T<: BaseSelection[Datum]
+trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T] {
 
   var length: Double = js.native
 
@@ -95,8 +94,7 @@ trait BaseSelection[Datum] extends BaseDom[Datum] {
 }
 
 @js.native
-trait Update[Datum] extends BaseSelection[Datum] {
-  type T = Update[Datum]
+trait Update[Datum] extends BaseSelection[Datum,Update[Datum]] {
 
   def selectAll[SelData](selector: String): Update[SelData] = js.native
 
@@ -130,8 +128,7 @@ trait Enter[Datum] extends js.Object {
 }
 
 @js.native
-trait Selection[Datum] extends selection.BaseSelection[Datum] {
-  override type T = Selection[Datum]
+trait Selection[Datum] extends selection.BaseSelection[Datum,Selection[Datum]] {
 
   //def selectAll(selector: String): Selection[js.Any] = js.native
   def selectAll[SelData](selector: String): Selection[SelData] = js.native

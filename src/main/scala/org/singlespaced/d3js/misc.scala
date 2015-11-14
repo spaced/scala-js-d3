@@ -1,7 +1,6 @@
 package org.singlespaced.d3js
 
 import org.scalajs.dom
-import org.singlespaced.d3js.d3
 import d3.Primitive
 
 import scala.scalajs.js
@@ -23,8 +22,8 @@ trait TransitionObject extends js.Object {
 
 
 @js.native
-trait BaseDom[Datum] extends js.Object {
-  type T<: BaseDom[Datum]
+trait BaseDom[Datum,T <: BaseDom[Datum,T]] extends js.Object {
+//  self: T =>
 
   type DatumFunction[M]=js.Function3[Datum, Int, Int, M]
   type SelfOrDatumFunction[M]=M | js.Function3[Datum, Int, Int, M]
@@ -56,8 +55,7 @@ trait BaseDom[Datum] extends js.Object {
 
 
 @js.native
-trait Transition[Datum] extends BaseDom[Datum] {
-  override type T=Transition[Datum]
+trait Transition[Datum] extends BaseDom[Datum,Transition[Datum]] {
 
   def transition(): Transition[Datum] = js.native
 
