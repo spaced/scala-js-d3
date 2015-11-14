@@ -16,7 +16,7 @@ Pre-alpha: types, parameters and defaults may not work as expected.
 
 Usage
 -----
-Enjoy the types available in `org.scalajs.d3`:
+Enjoy the types available in `org.singlespaced.d3js`:
 ```
 package example
 
@@ -37,7 +37,7 @@ more about [d3js.org](http://d3js.org)
 
 
 
-scalajs-d3 0.1-SNAPSHOT is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
 
 License
 -------
