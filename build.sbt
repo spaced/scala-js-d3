@@ -4,7 +4,7 @@ name := "Scala.js d3"
 
 normalizedName := "scalajs-d3"
 
-version := "0.1-SNAPSHOT"
+version := "0.1.0"
 
 organization := "org.singlespaced"
 
@@ -33,5 +33,6 @@ scmInfo := Some(ScmInfo(
   "scm:git:git@github.com:spaced/scala-js-d3.git",
   Some("scm:git:git@github.com:spaced/scala-js-d3.git")))
 
-publishMavenStyle := true
+publishMavenStyle := false
 
+//bintray.Keys.repository := "maven"
