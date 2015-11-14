@@ -5,10 +5,7 @@ Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
 ![](https://github.com/spaced/scala-js-d3/blob/master/site/d3demo.png)
 
-Release 0.1.0
--------------
-- Strongly typed with tuples, unions, dictionaries and functions
-- Ops implicits
+[CHANGELOG](https://github.com/spaced/scala-js-d3/blob/master/CHANGELOG.md)
 
 Warning
 -------
@@ -18,7 +15,7 @@ Usage
 -----
 Add the following to your sbt build definition:
 
-    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.1.0"
+    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.1.1"
 
 Enjoy the types available in `org.singlespaced.d3js`:
 ```
@@ -41,7 +38,7 @@ more about [d3js.org](http://d3js.org)
 
 See also example project [scala-js-d3-example-app](https://github.com/spaced/scala-js-d3-example-app)
 
-scalajs-d3 0.1.0 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1.1 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
 
 License
 -------
