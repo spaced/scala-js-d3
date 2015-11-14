@@ -5,7 +5,10 @@ import org.singlespaced.d3js.d3.Primitive
 import scala.language.implicitConversions
 import scala.scalajs.js
 
-
+/**
+  *  Implicit conversion from [scala.Function1] and [scala.Function2] to [[js.Function3]].
+  *  Implicit conversion for a Function using [Primitive]
+  */
 object Ops {
 
   @inline implicit def fromFunction1To3StringPrimitive[Datum](value: Datum => String): js.Function3[Datum, Int, Int, Primitive] =
