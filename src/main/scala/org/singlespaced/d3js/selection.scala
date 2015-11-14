@@ -80,8 +80,8 @@ trait BaseSelection[Datum] extends BaseDom[Datum] {
 
   def order(): T = js.native
 
-  def on(`type`: String): js.Function3[Datum, Double, Double, Any] = js.native
-  def on(`type`: String, listener: js.Function3[Datum, Double, Double, Any], capture: Boolean = false): T = js.native
+  def on(`type`: String): DatumFunction[Unit] = js.native
+  def on(`type`: String, listener: DatumFunction[Unit], capture: Boolean = false): T = js.native
 
   def transition(name: String = ???): Transition[Datum] = js.native
 
