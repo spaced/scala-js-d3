@@ -12,12 +12,12 @@ object SelectionTest extends TestSuite {
 
   val tests = TestSuite {
     'd3_select_element {
-      val sel:Selection[dom.Element]=d3.select("p")
+      val sel:Selection[dom.EventTarget]=d3.select("p")
       val n:dom.EventTarget=sel.node()
       assert(elem == n)
     }
     'd3_selectAll_element {
-      val sel:Selection[dom.Element]=d3.selectAll("p")
+      val sel:Selection[dom.EventTarget]=d3.selectAll("p")
       val n:dom.EventTarget=sel.node()
       assert(elem == n)
     }

@@ -15,7 +15,7 @@ object d3 extends js.Object  {
   type Primitive = Double | String | Boolean
 
   var version: String = js.native
-  def select(selector: String): Selection[c] = js.native
+  def select(selector: String): Selection[dom.EventTarget] = js.native
   def select(node: dom.EventTarget): Selection[dom.EventTarget] = js.native
   def selectAll(selector: String): Selection[dom.EventTarget] = js.native
   def selectAll(nodes: js.Array[dom.EventTarget]): Selection[dom.EventTarget] = js.native
