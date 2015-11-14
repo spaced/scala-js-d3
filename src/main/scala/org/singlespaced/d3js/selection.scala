@@ -66,8 +66,8 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T]
 
   def data(): js.Array[Datum] = js.native
   def data[NewDatum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
-  def data[NewDatum](data: js.Array[NewDatum], key: js.Function3[NewDatum, Double, Double, String]): Update[NewDatum] = js.native
-  def data[NewDatum](data: DatumFunction[js.Array[NewDatum]], key: js.Function3[NewDatum, Double, Double, String]): Update[NewDatum] = js.native
+  def data[NewDatum](data: js.Array[NewDatum], key: js.Function3[NewDatum, Int, Int, String]): Update[NewDatum] = js.native
+  def data[NewDatum](data: DatumFunction[js.Array[NewDatum]], key: js.Function3[NewDatum, Int, Int, String]): Update[NewDatum] = js.native
 
   def filter(selector: DatumFunction[Boolean]): T = js.native
 
