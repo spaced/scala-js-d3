@@ -4,7 +4,7 @@ name := "Scala.js d3"
 
 normalizedName := "scalajs-d3"
 
-version := "0.1.0"
+version := "0.2.0-SNAPSHOT"
 
 organization := "org.singlespaced"
 
@@ -15,6 +15,8 @@ scalacOptions ++= Seq("-deprecation", "-feature")
 crossScalaVersions := Seq("2.10.5", "2.11.7")
 
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.2"
+
+resolvers += Resolver.jcenterRepo
 
 jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "3.5.6/d3.min.js"
 jsDependencies += RuntimeDOM
@@ -33,6 +35,6 @@ scmInfo := Some(ScmInfo(
   "scm:git:git@github.com:spaced/scala-js-d3.git",
   Some("scm:git:git@github.com:spaced/scala-js-d3.git")))
 
-publishMavenStyle := false
+publishMavenStyle := true
 
 //bintray.Keys.repository := "maven"
