@@ -15,12 +15,12 @@ object d3 extends js.Object  {
   type Primitive = Double | String | Boolean
 
   var version: String = js.native
-  def select(selector: String): Selection[js.Any] = js.native
-  def select(node: dom.EventTarget): Selection[js.Any] = js.native
-  def selectAll(selector: String): Selection[js.Any] = js.native
-  def selectAll(nodes: js.Array[dom.EventTarget]): Selection[js.Any] = js.native
-  def selection(): Selection[js.Any] = js.native
-  def transition(): Transition[js.Any] = js.native
+  def select(selector: String): Selection[dom.Element] = js.native
+  def select(node: dom.EventTarget): Selection[dom.Element] = js.native
+  def selectAll(selector: String): Selection[dom.Element] = js.native
+  def selectAll(nodes: js.Array[dom.EventTarget]): Selection[dom.Element] = js.native
+  def selection(): Selection[dom.Element] = js.native
+  def transition(): Transition[dom.Element] = js.native
   def ease(`type`: String, args: js.Any*): js.Function1[Double, Double] = js.native
   def timer(func: js.Function0[Any], delay: Double = ???, time: Double = ???): Unit = js.native
   var event: dom.Event | BaseEvent = js.native
