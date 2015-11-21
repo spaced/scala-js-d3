@@ -35,6 +35,18 @@ scmInfo := Some(ScmInfo(
   "scm:git:git@github.com:spaced/scala-js-d3.git",
   Some("scm:git:git@github.com:spaced/scala-js-d3.git")))
 
+
+pomExtra := (
+    <developers>
+      <developer>
+        <id>spaced</id>
+        <name>Adi Stadelmann</name>
+        <url>http://singlespaced.org</url>
+      </developer>
+    </developers>)
+
 publishMavenStyle := true
+
+useGpg := true
 
 //bintray.Keys.repository := "maven"
