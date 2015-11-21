@@ -99,7 +99,7 @@ trait Diagonal[Link, Node] extends js.Object {
 }
 
 @js.native
-trait Axis extends js.Object {
+trait Axis extends js.Function1[Selection[js.Any] | Transition[js.Any],Unit] {
   def apply(selection: Selection[js.Any]): Unit = js.native
 
   def apply(selection: Transition[js.Any]): Unit = js.native
@@ -147,10 +147,7 @@ trait Axis extends js.Object {
 
 
 @js.native
-trait Brush[T] extends js.Object {
-  def apply(selection: Selection[T]): Unit = js.native
-
-  def apply(selection: Transition[T]): Unit = js.native
+trait Brush[T] extends js.Function1[Selection[T] | Transition[T], Unit] {
 
   def event(selection: Selection[T]): Unit = js.native
 
