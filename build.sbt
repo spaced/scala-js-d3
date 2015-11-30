@@ -22,7 +22,7 @@ jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "3.5.6/d3.min.js"
 jsDependencies += RuntimeDOM
 
 // uTest settings
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.1" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 // use phantomjs for tests because d3 lib uses not features not supported by rhino
 scalaJSStage in Global := FastOptStage
