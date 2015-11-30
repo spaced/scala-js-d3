@@ -15,8 +15,7 @@ trait BehaviorObject extends js.Object {
 package behavior {
 
 @js.native
-trait Drag[Datum] extends js.Object {
-  def apply(selection: Selection[Datum]): Unit = js.native
+trait Drag[Datum] extends js.Function1[Selection[Datum],Unit] {
 
   def on(`type`: String): js.Function2[Datum, Double, Any] = js.native
 
@@ -28,8 +27,7 @@ trait Drag[Datum] extends js.Object {
 }
 
 @js.native
-trait Zoom[Datum] extends js.Object {
-  def apply(selection: Selection[Datum]): Unit = js.native
+trait Zoom[Datum] extends js.Function1[Selection[Datum],Unit] {
 
   def translate(): js.Tuple2[Double, Double] = js.native
 

@@ -76,8 +76,7 @@ trait GeoObject extends js.Object {
 }
 package geo {
   @js.native
-  trait Path extends js.Object {
-    def apply(feature: js.Any, index: Double): String = js.native
+  trait Path extends js.Function2[/*feature*/ js.Any, /*index*/ Double,String] {
     def area(feature: js.Any): Double = js.native
     def centroid(feature: js.Any): js.Tuple2[Double, Double] = js.native
     def bounds(feature: js.Any): js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
