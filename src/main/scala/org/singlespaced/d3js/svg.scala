@@ -9,33 +9,25 @@ trait SvgObject extends js.Object {
 
   import svg._
 
-  def line(): Line[js.Tuple2[Double, Double]] = js.native
+  def line[T](): Line[T] = js.native
 
-  //TODO def line[T](): Line[T] = js.native
+  def area[T](): Area[T] = js.native
 
-  def area(): Area[js.Tuple2[Double, Double]] = js.native
+  def arc[T](): Arc[T] = js.native
 
-  //TODO def area[T](): Area[T] = js.native
-
-  def arc(): Arc[arcModule.Arc] = js.native
-
-  //TODO def arc[T](): Arc[T] = js.native
-
-  def symbol(): Symbol[js.Any] = js.native
-
-  //TODO def symbol[T](): Symbol[T] = js.native
+  def symbol[T](): Symbol[T] = js.native
 
   var symbolTypes: js.Array[String] = js.native
 
   def chord(): Chord[chordModule.Link[chordModule.Node], chordModule.Node] = js.native
 
-  //TODO def chord[Node](): Chord[svgChord.Link[Node], Node] = js.native
+  //TODO def chord[Node](): Chord[chordModule.Link[Node], Node] = js.native
 
   //TODO def chord[Link, Node](): Chord[Link, Node] = js.native
 
   def diagonal(): Diagonal[diagonalModule.Link[diagonalModule.Node], diagonalModule.Node] = js.native
 
-  //TODO def diagonal[Node](): Diagonal[diagonal_.Link[Node], Node] = js.native
+  //TODO def diagonal[Node](): Diagonal[diagonalModule.Link[Node], Node] = js.native
 
   //TODO def diagonal[Link, Node](): Diagonal[Link, Node] = js.native
 
@@ -49,20 +41,19 @@ trait SvgObject extends js.Object {
 package svg {
 
 @js.native
-trait Line[T] extends js.Object {
-  def apply(data: js.Array[T]): String = js.native
+trait Line[T] extends js.Function1[js.Array[T],String] {
 
-  def x(): Double | js.Function2[T, Double, Double] = js.native
+  def x(): Double | js.Function2[T, Int, Double] = js.native
 
   def x(x: Double): Line[T] = js.native
 
-  def x(x: js.Function2[T, Double, Double]): Line[T] = js.native
+  def x(x: js.Function2[T, Int, Double]): Line[T] = js.native
 
-  def y(): Double | js.Function2[T, Double, Double] = js.native
+  def y(): Double | js.Function2[T, Int, Double] = js.native
 
   def y(x: Double): Line[T] = js.native
 
-  def y(y: js.Function2[T, Double, Double]): Line[T] = js.native
+  def y(y: js.Function2[T, Int, Double]): Line[T] = js.native
 
   def interpolate(): String | js.Function1[js.Array[js.Tuple2[Double, Double]], String] = js.native
 
@@ -74,12 +65,11 @@ trait Line[T] extends js.Object {
 
   def defined(): js.Function2[T, Double, Boolean] = js.native
 
-  def defined(defined: js.Function2[T, Double, Boolean]): Line[T] = js.native
+  def defined(defined: js.Function2[T, Int, Boolean]): Line[T] = js.native
 }
 
 @js.native
-trait Diagonal[Link, Node] extends js.Object {
-  def apply(d: Link, i: Double): String = js.native
+trait Diagonal[Link, Node] extends js.Function2[Link,Double,String] {
 
   def source(): js.Function2[Link, Double, Node] = js.native
 
@@ -180,44 +170,43 @@ trait Brush[T] extends js.Function1[Selection[T] | Transition[T], Unit] {
 
 
 @js.native
-trait Area[T] extends js.Object {
-  def apply(data: js.Array[T]): String = js.native
+trait Area[T] extends js.Function1[js.Array[T],String] {
 
-  def x(): Double | js.Function2[T, Double, Double] = js.native
+  def x(): Double | js.Function2[T, Int, Double] = js.native
 
   def x(x: Double): Area[T] = js.native
 
-  def x(x: js.Function2[T, Double, Double]): Area[T] = js.native
+  def x(x: js.Function2[T, Int, Double]): Area[T] = js.native
 
-  def x0(): Double | js.Function2[T, Double, Double] = js.native
+  def x0(): Double | js.Function2[T, Int, Double] = js.native
 
   def x0(x0: Double): Area[T] = js.native
 
-  def x0(x0: js.Function2[T, Double, Double]): Area[T] = js.native
+  def x0(x0: js.Function2[T, Int, Double]): Area[T] = js.native
 
-  def x1(): Double | js.Function2[T, Double, Double] = js.native
+  def x1(): Double | js.Function2[T, Int, Double] = js.native
 
   def x1(x1: Double): Area[T] = js.native
 
-  def x1(x1: js.Function2[T, Double, Double]): Area[T] = js.native
+  def x1(x1: js.Function2[T, Int, Double]): Area[T] = js.native
 
-  def y(): Double | js.Function2[T, Double, Double] = js.native
+  def y(): Double | js.Function2[T, Int, Double] = js.native
 
   def y(y: Double): Area[T] = js.native
 
-  def y(y: js.Function2[T, Double, Double]): Area[T] = js.native
+  def y(y: js.Function2[T, Int, Double]): Area[T] = js.native
 
-  def y0(): Double | js.Function2[T, Double, Double] = js.native
+  def y0(): Double | js.Function2[T, Int, Double] = js.native
 
   def y0(y0: Double): Area[T] = js.native
 
-  def y0(y0: js.Function2[T, Double, Double]): Area[T] = js.native
+  def y0(y0: js.Function2[T, Int, Double]): Area[T] = js.native
 
-  def y1(): Double | js.Function2[T, Double, Double] = js.native
+  def y1(): Double | js.Function2[T, Int, Double] = js.native
 
   def y1(y1: Double): Area[T] = js.native
 
-  def y1(y1: js.Function2[T, Double, Double]): Area[T] = js.native
+  def y1(y1: js.Function2[T, Int, Double]): Area[T] = js.native
 
   def interpolate(): String | js.Function1[js.Array[js.Tuple2[Double, Double]], String] = js.native
 
@@ -227,69 +216,69 @@ trait Area[T] extends js.Object {
 
   def tension(tension: Double): Area[T] = js.native
 
-  def defined(): js.Function2[T, Double, Boolean] = js.native
+  def defined(): js.Function2[T, Int, Boolean] = js.native
 
-  def defined(defined: js.Function2[T, Double, Boolean]): Area[T] = js.native
+  def defined(defined: js.Function2[T, Int, Boolean]): Area[T] = js.native
 }
 
 @js.native
 trait Arc[T] extends js.Object {
-  def apply(d: T, i: Double = ???): String = js.native
+  def apply(d: T, i: Int = ???): String = js.native
 
-  def innerRadius(): js.Function2[T, Double, Double] = js.native
+  def innerRadius(): js.Function2[T, Int, Double] = js.native
 
   def innerRadius(radius: Double): Arc[T] = js.native
 
-  def innerRadius(radius: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def innerRadius(radius: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def outerRadius(): js.Function2[T, Double, Double] = js.native
+  def outerRadius(): js.Function2[T, Int, Double] = js.native
 
   def outerRadius(radius: Double): Arc[T] = js.native
 
-  def outerRadius(radius: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def outerRadius(radius: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def cornerRadius(): js.Function2[T, Double, Double] = js.native
+  def cornerRadius(): js.Function2[T, Int, Double] = js.native
 
   def cornerRadius(radius: Double): Arc[T] = js.native
 
-  def cornerRadius(radius: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def cornerRadius(radius: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def padRadius(): String | js.Function2[T, Double, Double] = js.native
+  def padRadius(): String | js.Function2[T, Int, Double] = js.native
 
   def padRadius(radius: String): Arc[T] = js.native
 
-  def padRadius(radius: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def padRadius(radius: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def startAngle(): js.Function2[T, Double, Double] = js.native
+  def startAngle(): js.Function2[T, Int, Double] = js.native
 
   def startAngle(angle: Double): Arc[T] = js.native
 
-  def startAngle(angle: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def startAngle(angle: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def endAngle(): js.Function2[T, Double, Double] = js.native
+  def endAngle(): js.Function2[T, Int, Double] = js.native
 
   def endAngle(angle: Double): Arc[T] = js.native
 
-  def endAngle(angle: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def endAngle(angle: js.Function2[T, Int, Double]): Arc[T] = js.native
 
-  def padAngle(): js.Function2[T, Double, Double] = js.native
+  def padAngle(): js.Function2[T, Int, Double] = js.native
 
   def padAngle(angle: Double): Arc[T] = js.native
 
-  def padAngle(angle: js.Function2[T, Double, Double]): Arc[T] = js.native
+  def padAngle(angle: js.Function2[T, Int, Double]): Arc[T] = js.native
 
   def centroid(d: T, i: Double = ???): js.Tuple2[Double, Double] = js.native
 }
 
 @js.native
 trait Symbol[T] extends js.Object {
-  def apply(d: T, i: Double = ???): String = js.native
+  def apply(d: T, i: Int = ???): String = js.native
 
-  def `type`(): js.Function2[T, Double, String] = js.native
+  def `type`(): js.Function2[T, Int, String] = js.native
 
   def `type`(`type`: String): Symbol[T] = js.native
 
-  def `type`(`type`: js.Function2[T, Double, String]): Symbol[T] = js.native
+  def `type`(`type`: js.Function2[T, Int, String]): Symbol[T] = js.native
 
   def size(): js.Function2[T, String, Double] = js.native
 
@@ -344,20 +333,19 @@ trait LineObject extends js.Object {
 package lineModule {
 
 @js.native
-trait Radial[T] extends js.Object {
-  def apply(data: js.Array[T]): String = js.native
+trait Radial[T] extends js.Function1[js.Array[T],String] {
 
-  def radius(): Double | js.Function2[T, Double, Double] = js.native
+  def radius(): Double | js.Function2[T, Int, Double] = js.native
 
   def radius(radius: Double): Radial[T] = js.native
 
-  def radius(radius: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def radius(radius: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def angle(): Double | js.Function2[T, Double, Double] = js.native
+  def angle(): Double | js.Function2[T, Int, Double] = js.native
 
   def angle(angle: Double): Radial[T] = js.native
 
-  def angle(angle: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def angle(angle: js.Function2[T, Int, Double]): Radial[T] = js.native
 
   def interpolate(): String | js.Function1[js.Array[js.Tuple2[Double, Double]], String] = js.native
 
@@ -367,9 +355,9 @@ trait Radial[T] extends js.Object {
 
   def tension(tension: Double): Radial[T] = js.native
 
-  def defined(): js.Function2[T, Double, Boolean] = js.native
+  def defined(): js.Function2[T, Int, Boolean] = js.native
 
-  def defined(defined: js.Function2[T, Double, Boolean]): Radial[T] = js.native
+  def defined(defined: js.Function2[T, Int, Boolean]): Radial[T] = js.native
 }
 
 }
@@ -384,44 +372,43 @@ trait AreaObject extends js.Object {
 package areaModule {
 
 @js.native
-trait Radial[T] extends js.Object {
-  def apply(data: js.Array[T]): String = js.native
+trait Radial[T] extends js.Function1[js.Array[T],String] {
 
-  def radius(): Double | js.Function2[T, Double, Double] = js.native
+  def radius(): Double | js.Function2[T, Int, Double] = js.native
 
   def radius(radius: Double): Radial[T] = js.native
 
-  def radius(radius: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def radius(radius: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def innerRadius(): Double | js.Function2[T, Double, Double] = js.native
+  def innerRadius(): Double | js.Function2[T, Int, Double] = js.native
 
   def innerRadius(innerRadius: Double): Radial[T] = js.native
 
-  def innerRadius(innerRadius: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def innerRadius(innerRadius: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def outerRadius(): Double | js.Function2[T, Double, Double] = js.native
+  def outerRadius(): Double | js.Function2[T, Int, Double] = js.native
 
   def outerRadius(outerRadius: Double): Radial[T] = js.native
 
-  def outerRadius(outerRadius: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def outerRadius(outerRadius: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def angle(): Double | js.Function2[T, Double, Double] = js.native
+  def angle(): Double | js.Function2[T, Int, Double] = js.native
 
   def angle(angle: Double): Radial[T] = js.native
 
-  def angle(angle: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def angle(angle: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def startAngle(): Double | js.Function2[T, Double, Double] = js.native
+  def startAngle(): Double | js.Function2[T, Int, Double] = js.native
 
   def startAngle(startAngle: Double): Radial[T] = js.native
 
-  def startAngle(startAngle: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def startAngle(startAngle: js.Function2[T, Int, Double]): Radial[T] = js.native
 
-  def endAngle(): Double | js.Function2[T, Double, Double] = js.native
+  def endAngle(): Double | js.Function2[T, Int, Double] = js.native
 
   def endAngle(endAngle: Double): Radial[T] = js.native
 
-  def endAngle(endAngle: js.Function2[T, Double, Double]): Radial[T] = js.native
+  def endAngle(endAngle: js.Function2[T, Int, Double]): Radial[T] = js.native
 
   def interpolate(): String | js.Function1[js.Array[js.Tuple2[Double, Double]], String] = js.native
 
@@ -431,9 +418,9 @@ trait Radial[T] extends js.Object {
 
   def tension(tension: Double): Radial[T] = js.native
 
-  def defined(): js.Function2[T, Double, Boolean] = js.native
+  def defined(): js.Function2[T, Int, Boolean] = js.native
 
-  def defined(defined: js.Function2[T, Double, Boolean]): Radial[T] = js.native
+  def defined(defined: js.Function2[T, Int, Boolean]): Radial[T] = js.native
 }
 
 }
