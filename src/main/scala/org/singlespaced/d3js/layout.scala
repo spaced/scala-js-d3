@@ -17,11 +17,9 @@ trait LayoutObject extends js.Object {
 
   //TODO def cluster[T <: cluster_.Result](): Cluster[T] = js.native
 
-  def force(): forceModule.Force[forceModule.Link[forceModule.Node], forceModule.Node] = js.native
+  //def force(): forceModule.Force[forceModule.Node, forceModule.Link[forceModule.Node]] = js.native
 
-  //TODO def force[Node <: force_.Node](): force_.Force[force_.Link[Node], Node] = js.native
-
-  //TODO def force[Link <: force_.Link[force_.Node], Node <: force_.Node](): force_.Force[Link, Node] = js.native
+  def force[N <: forceModule.Node, L <: forceModule.Link[N] ](): forceModule.Force[N, L] = js.native
 
   def hierarchy(): Hierarchy[hierarchyModule.Result] = js.native
 
@@ -209,67 +207,68 @@ trait Event extends js.Object {
 }
 
 @js.native
-trait Force[Link <: forceModule.Link[forceModule.Node], Node <: forceModule.Node] extends js.Object {
+trait Force[Node <: forceModule.Node, Link <: forceModule.Link[Node] ] extends js.Object {
   def size(): js.Tuple2[Double, Double] = js.native
 
-  def size(size: js.Tuple2[Double, Double]): Force[Link, Node] = js.native
+  def size(size: js.Tuple2[Double, Double]): Force[Node,Link] = js.native
 
   def linkDistance(): Double | js.Function2[Link, Double, Double] = js.native
 
-  def linkDistance(distance: Double): Force[Link, Node] = js.native
+  def linkDistance(distance: Double): Force[Node,Link] = js.native
 
-  def linkDistance(distance: js.Function2[Link, Double, Double]): Force[Link, Node] = js.native
+  def linkDistance(distance: js.Function2[Link, Double, Double]): Force[Node,Link] = js.native
 
   def linkStrength(): Double | js.Function2[Link, Double, Double] = js.native
 
-  def linkStrength(strength: Double): Force[Link, Node] = js.native
+  def linkStrength(strength: Double): Force[Node,Link] = js.native
 
-  def linkStrength(strength: js.Function2[Link, Double, Double]): Force[Link, Node] = js.native
+  def linkStrength(strength: js.Function2[Link, Double, Double]): Force[Node,Link] = js.native
 
   def friction(): Double = js.native
 
-  def friction(friction: Double): Force[Link, Node] = js.native
+  def friction(friction: Double): Force[Node,Link] = js.native
 
   def charge(): Double | js.Function2[Node, Double, Double] = js.native
 
-  def charge(charge: Double): Force[Link, Node] = js.native
+  def charge(charge: Double): Force[Node,Link] = js.native
 
-  def charge(charge: js.Function2[Node, Double, Double]): Force[Link, Node] = js.native
+  def charge(charge: js.Function2[Node, Double, Double]): Force[Node,Link] = js.native
 
   def chargeDistance(): Double = js.native
 
-  def chargeDistance(distance: Double): Force[Link, Node] = js.native
+  def chargeDistance(distance: Double): Force[Node,Link] = js.native
 
   def theta(): Double = js.native
 
-  def theta(theta: Double): Force[Link, Node] = js.native
+  def theta(theta: Double): Force[Node,Link] = js.native
 
   def gravity(): Double = js.native
 
-  def gravity(gravity: Double): Force[Link, Node] = js.native
+  def gravity(gravity: Double): Force[Node,Link] = js.native
 
   def nodes(): js.Array[Node] = js.native
 
-  def nodes(nodes: js.Array[Node]): Force[Link, Node] = js.native
+  def nodes(nodes: js.Array[Node]): Force[Node,Link] = js.native
 
   def links(): js.Array[Link] = js.native
 
-  def links(links: js.Array[js.Any]): Force[Link, Node] = js.native
+  //def links(links: js.Array[js.Any]): Force[Node,Link] = js.native
 
-  //def links(links: js.Array[Link] ): Force[Link, Node] = js.native
-  def start(): Force[Link, Node] = js.native
+  def links(links: js.Array[Link] ): Force[Node,Link] = js.native
+
+  def start(): Force[Node,Link] = js.native
 
   def alpha(): Double = js.native
 
-  def alpha(value: Double): Force[Link, Node] = js.native
+  def alpha(value: Double): Force[Node,Link] = js.native
 
-  def resume(): Force[Link, Node] = js.native
+  def resume(): Force[Node,Link] = js.native
 
-  def stop(): Force[Link, Node] = js.native
+  def stop(): Force[Node,Link] = js.native
 
   def on(`type`: String): js.Function1[forceModule.Event, Unit] = js.native
 
-  def on(`type`: String, listener: js.Function1[forceModule.Event, Unit]): Force[Link, Node] = js.native
+  def on(`type`: String, listener: js.Function1[forceModule.Event, Unit]): Force[Node,Link] = js.native
 
   def drag(): behavior.Drag[Node] = js.native
 
