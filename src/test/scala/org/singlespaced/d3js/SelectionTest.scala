@@ -3,7 +3,8 @@ package org.singlespaced.d3js
 import org.scalajs.dom
 import utest._
 import scala.scalajs.js
-import scala.scalajs.js.{ThisFunction, |}
+import scala.scalajs.js.`|`
+import org.singlespaced.d3js.Ops._
 object SelectionTest extends TestSuite {
 
 
@@ -29,6 +30,16 @@ object SelectionTest extends TestSuite {
         "a"
       }
       sel.data[Int](js.Array(5),function).enter().append("p")
+    }
+    'd3_dataWithKey_simpleFunction {
+      //arrange
+      class MyData(val id:String)
+      class MySubData(id:String) extends MyData(id)
+      val sel=d3.selectAll("p").data(js.Array(new MyData("1")))
+      val function= (d:MyData) => d.id
+      //act
+      sel.data[MySubData](js.Array(new MySubData("2")),function).enter().append("p")
+      //assert
     }
 
 
