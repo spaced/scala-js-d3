@@ -44,6 +44,9 @@ object Ops {
   @inline implicit def fromFunction1To3[Datum, M](value: Datum => M): js.Function3[Datum, Int, Int, M] =
     (d: Datum, i: Int, x: Int) => value.apply(d)
 
+  @inline implicit def fromFunction1To2[Datum, M](value: Datum => M): js.Function2[Datum, Int, M] =
+    (d: Datum, i: Int) => value.apply(d)
+
   @inline implicit def fromFunction2To3[Datum, M](value: (Datum, Int) => M): js.Function3[Datum, Int, Int, M] =
     (d: Datum, i: Int, x: Int) => value.apply(d, i)
 

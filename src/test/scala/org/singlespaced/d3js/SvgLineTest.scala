@@ -32,6 +32,16 @@ object SvgLineTest extends TestSuite {
       assert( actual.length == 1)
       assert( actual.item(0).asInstanceOf[dom.Element].getAttribute("d") =="M1,1L4,4")
     }
+    'd3_line_function1 {
+      //arrange
+      case class TestDatum(v:Int)
+      val data=js.Array[TestDatum](TestDatum(1),TestDatum(4))
+      val testee = d3.svg.line[TestDatum]
+      //act
+      val result=testee
+        .x((d:TestDatum) =>  d.v.toDouble )
+        .y((d:TestDatum) =>  d.v.toDouble )
+    }
 
 
   }
