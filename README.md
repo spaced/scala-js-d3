@@ -5,10 +5,6 @@ Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
 ![](https://github.com/spaced/scala-js-d3/blob/master/site/d3demo.png)
 
-Warning
--------
-Pre-alpha: types, parameters and defaults may not work as expected.
-
 Usage
 -----
 Add the following to your sbt build definition:
