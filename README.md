@@ -9,7 +9,7 @@ Usage
 -----
 Add the following to your sbt build definition:
 
-    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.1.1"
+    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.1.2"
 
 Enjoy the types available in `org.singlespaced.d3js`:
 ```
@@ -49,7 +49,7 @@ are permitted provided that the following conditions are met:
 *   Redistributions in binary form must reproduce the above copyright notice,
     this list of conditions and the following disclaimer in the documentation
     and/or other materials provided with the distribution.
-*   Neither the name of the EPFL nor the names of its contributors
+*   Neither the name of the singlespaced.org nor the names of its contributors
     may be used to endorse or promote products derived from this software
     without specific prior written permission.
 

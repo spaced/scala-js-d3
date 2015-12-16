@@ -4,7 +4,7 @@ name := "Scala.js d3"
 
 normalizedName := "scalajs-d3"
 
-version := "0.1.1"
+version := "0.1.2"
 
 organization := "org.singlespaced"
 
