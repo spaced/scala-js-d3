@@ -31,6 +31,8 @@ trait LayoutObject extends js.Object {
 
   def pack(): Pack[packModule.Node] = js.native
 
+  def partition(): Partition[partitionModule.Node] = js.native
+
   //TODO def pack[T <: pack_.Node](): Pack[T] = js.native
 
   def pie(): Pie[Double] = js.native
@@ -400,6 +402,43 @@ trait Pack[T <: packModule.Node] extends js.Object {
 
   def padding(padding: Double): Pack[T] = js.native
 }
+
+package partitionModule {
+
+@js.native
+trait Link[T <: Node] extends js.Object {
+  var source: T = js.native
+  var target: T = js.native
+}
+
+@js.native
+trait Node extends js.Object {
+  var parent: Node = js.native
+  var children: Double = js.native
+  var value: Double = js.native
+  var depth: Double = js.native
+  var x: Double = js.native
+  var y: Double = js.native
+  var dx: Double = js.native
+  var dy: Double = js.native
+}
+
+}
+
+@js.native
+trait Partition[T <: partitionModule.Node] extends js.Object {
+  def nodes(root: T): js.Array[T] = js.native
+  def links(nodes: js.Array[T]): js.Array[partitionModule.Link[T]] = js.native
+  def children(): js.Function2[T, Double, js.Array[T]] = js.native
+  def children(children: js.Function2[T, Double, js.Array[T]]): Partition[T] = js.native
+  def sort(): js.Function2[T, T, Double] = js.native
+  def sort(comparator: js.Function2[T, T, Double]): Partition[T] = js.native
+  def value(): js.Function1[T, Double] = js.native
+  def value(value: js.Function1[T, Double]): Partition[T] = js.native
+  def size(): js.Tuple2[Double, Double] = js.native
+  def size(size: js.Tuple2[Double, Double]): Partition[T] = js.native
+}
+
 package pieModule {
 
 @js.native
