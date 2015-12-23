@@ -547,14 +547,12 @@ trait Node extends js.Object {
 }
 
 @js.native
-trait Tree[T] extends js.Object {
+trait Tree[T <: treeModule.Node] extends js.Object {
   def apply(root: T, index: Double = ???): js.Array[T] = js.native
 
   def nodes(root: T, index: Double = ???): js.Array[T] = js.native
-
-  //todo:fix T must be node subtype 
   
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
+  def links(nodes: js.Array[T]): js.Array[treeModule.Link[T]] = js.native
   
   def children(): js.Function2[T, Double, js.Array[T]] = js.native
 
@@ -655,6 +653,3 @@ trait Treemap[T <: treemapModule.Node] extends js.Object {
 
   def ratio(ratio: Double): Treemap[T] = js.native
 }
-
-
-
