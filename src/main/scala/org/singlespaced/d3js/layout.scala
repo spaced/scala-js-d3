@@ -554,7 +554,7 @@ trait Tree[T] extends js.Object {
 
   //todo:fix T must be node subtype 
   
-  def links(nodes: js.Array[T]): js.Array[tree_.Link[T]] = js.native
+  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
   
   def children(): js.Function2[T, Double, js.Array[T]] = js.native
 
