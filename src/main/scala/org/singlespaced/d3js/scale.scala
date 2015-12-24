@@ -53,18 +53,8 @@ trait ScaleObject extends js.Object {
 package scale {
 
 @js.native
-trait Identity extends js.Object {
+trait Identity extends BaseScale[Double,Double,Identity]{
   def apply(n: Double): Double = js.native
-
-  def invert(n: Double): Double = js.native
-
-  def domain(): js.Array[Double] = js.native
-
-  def domain(numbers: js.Array[Double]): Identity = js.native
-
-  def range(): js.Array[Double] = js.native
-
-  def range(numbers: js.Array[Double]): Identity = js.native
 
   def ticks(count: Double = ???): js.Array[Double] = js.native
 
@@ -74,18 +64,8 @@ trait Identity extends js.Object {
 }
 
 @js.native
-trait Linear[Range, Output] extends js.Object {
+trait Linear[Range, Output] extends BaseScale[Double,Range,Linear[Range,Output]] {
   def apply(x: Double): Output = js.native
-
-  def invert(y: Double): Double = js.native
-
-  def domain(): js.Array[Double] = js.native
-
-  def domain(numbers: js.Array[Double]): Linear[Range, Output] = js.native
-
-  def range(): js.Array[Range] = js.native
-
-  def range(values: js.Array[Range]): Linear[Range, Output] = js.native
 
   def rangeRound(values: js.Array[Double]): Linear[Double, Double] = js.native
 
@@ -107,18 +87,8 @@ trait Linear[Range, Output] extends js.Object {
 }
 
 @js.native
-trait Pow[Range, Output] extends js.Object {
+trait Pow[Range, Output] extends BaseScale[Double,Range,Pow[Range,Output]] {
   def apply(x: Double): Output = js.native
-
-  def invert(y: Double): Double = js.native
-
-  def domain(): js.Array[Double] = js.native
-
-  def domain(numbers: js.Array[Double]): Pow[Range, Output] = js.native
-
-  def range(): js.Array[Range] = js.native
-
-  def range(values: js.Array[Range]): Pow[Range, Output] = js.native
 
   def rangeRound(values: js.Array[Double]): Pow[Double, Double] = js.native
 
@@ -144,18 +114,8 @@ trait Pow[Range, Output] extends js.Object {
 }
 
 @js.native
-trait Log[Range, Output] extends js.Object {
+trait Log[Range, Output] extends BaseScale[Double,Range,Log[Range,Output]] {
   def apply(x: Double): Output = js.native
-
-  def invert(y: Double): Double = js.native
-
-  def domain(): js.Array[Double] = js.native
-
-  def domain(numbers: js.Array[Double]): Log[Range, Output] = js.native
-
-  def range(): js.Array[Range] = js.native
-
-  def range(values: js.Array[Range]): Log[Range, Output] = js.native
 
   def rangeRound(values: js.Array[Double]): Log[Double, Double] = js.native
 

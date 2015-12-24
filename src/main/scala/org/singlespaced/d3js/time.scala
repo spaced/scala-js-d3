@@ -141,22 +141,12 @@ trait ScaleObject extends js.Object {
 
 
 @js.native
-trait Scale[Range, Output] extends js.Object {
+trait Scale[Range, Output] extends BaseScale[Date,Range,Scale[Range, Output]] {
   def apply(x: Date): Output = js.native
-
-  def invert(y: Double): Date = js.native
-
-  def domain(): js.Array[Date] = js.native
-
-  def domain(dates: js.Array[Date] | js.Array[Double]): Scale[Range, Output] = js.native
 
   def nice(): Scale[Range, Output] = js.native
 
   def nice(interval: Interval, step: Double): Scale[Range, Output] = js.native
-
-  def range(): js.Array[Range] = js.native
-
-  def range(values: js.Array[Range]): Scale[Range, Output] = js.native
 
   def rangeRound(values: js.Array[Double]): Scale[Double, Double] = js.native
 

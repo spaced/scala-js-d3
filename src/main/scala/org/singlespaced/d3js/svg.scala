@@ -145,11 +145,11 @@ trait Brush[T] extends js.Function1[Selection[T] | Transition[T], Unit] {
 
   def x(): brushModule.Scale = js.native
 
-  def x(x: brushModule.Scale): Brush[T] = js.native
+  def x[S<:BaseScale[_,_,S]](x:S): Brush[T] = js.native
 
   def y(): brushModule.Scale = js.native
 
-  def y(y: brushModule.Scale): Brush[T] = js.native
+  def y[S<:BaseScale[_,_,S]](x:S): Brush[T] = js.native
 
   def extent(): js.Tuple2[Double, Double] | js.Tuple2[js.Tuple2[Double, Double], js.Tuple2[Double, Double]] = js.native
 
@@ -478,16 +478,8 @@ trait Radial[Link, Node] extends js.Object {
 package brushModule {
 
 @js.native
-trait Scale extends js.Object {
-  def domain(): js.Array[Double] = js.native
+trait Scale extends BaseScale[Double,Double,Scale] {
 
-  def domain(domain: js.Array[Double]): Scale = js.native
-
-  def range(): js.Array[Double] = js.native
-
-  def range(range: js.Array[Double]): Scale = js.native
-
-  def invert(y: Double): Double = js.native
 }
 
 }

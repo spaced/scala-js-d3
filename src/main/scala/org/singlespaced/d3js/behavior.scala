@@ -51,11 +51,11 @@ trait Zoom[Datum] extends js.Function1[Selection[Datum],Unit] {
 
   def x(): zoom.Scale = js.native
 
-  def x(x: zoom.Scale): Zoom[Datum] = js.native
+  def x[S<:BaseScale[_,_,S]](x:S): Zoom[Datum] = js.native
 
   def y(): zoom.Scale = js.native
 
-  def y(y: zoom.Scale): Zoom[Datum] = js.native
+  def y[S<:BaseScale[_,_,S]](x:S): Zoom[Datum] = js.native
 
   def on(`type`: String): js.Function2[Datum, Double, Any] = js.native
 
@@ -70,16 +70,8 @@ package zoom {
 
 
 @js.native
-trait Scale extends js.Object {
-  def domain(): js.Array[Double] = js.native
+trait Scale extends BaseScale[Double,Double,Scale] {
 
-  def domain(values: js.Array[Double]): Scale = js.native
-
-  def invert(y: Double): Double = js.native
-
-  def range(values: js.Array[Double]): Scale = js.native
-
-  def range(): js.Array[Double] = js.native
 }
 
 
