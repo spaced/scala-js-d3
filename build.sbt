@@ -16,7 +16,7 @@ libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.2"
 
 resolvers += Resolver.jcenterRepo
 
-jsDependencies += "org.webjars" % "d3js" % "3.5.6" / "3.5.6/d3.min.js"
+jsDependencies += "org.webjars" % "d3js" % "3.5.10" / "3.5.10/d3.min.js"
 jsDependencies += RuntimeDOM
 
 // uTest settings
