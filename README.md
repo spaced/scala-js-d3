@@ -32,7 +32,7 @@ more about [d3js.org](http://d3js.org)
 
 See also example project [scala-js-d3-example-app](https://github.com/spaced/scala-js-d3-example-app)
 
-scalajs-d3 0.1.1 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
+scalajs-d3 0.1.2 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
 
 License
 -------
