@@ -2,7 +2,7 @@ package org.singlespaced.d3js
 
 import scala.scalajs.js
 import scala.scalajs.js.`|`
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.{JSName,ScalaJSDefined}
 
 @JSName("d3.layout")
 @js.native
@@ -203,8 +203,7 @@ trait Node extends js.Object {
 }
 
 @js.native
-trait Event extends js.Object {
-  var `type`: String = js.native
+trait Event extends org.scalajs.dom.Event {
   var alpha: Double = js.native
 }
 
@@ -268,9 +267,9 @@ trait Force[Node <: forceModule.Node, Link <: forceModule.Link[Node] ] extends j
 
   def stop(): Force[Node,Link] = js.native
 
-  def on(`type`: String): js.Function1[forceModule.Event, Unit] = js.native
+  def on(`type`: String): js.Function1[org.scalajs.dom.Event, Unit] = js.native
 
-  def on(`type`: String, listener: js.Function1[forceModule.Event, Unit]): Force[Node,Link] = js.native
+  def on(`type`: String, listener: js.Function1[org.scalajs.dom.Event, Unit]): Force[Node,Link] = js.native
 
   def drag(): behavior.Drag[Node] = js.native
 
