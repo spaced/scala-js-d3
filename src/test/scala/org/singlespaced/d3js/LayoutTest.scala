@@ -12,15 +12,12 @@ object LayoutTest extends TestSuite {
 
   val tests = TestSuite {
 
-    'd3_forcelayout_link_source {
+    'd3_forcelayout_simplelink_source {
       //arrange
       val node1 = "one"
       val node2 = "two"
       //act
-      val testee=new Link[String] {
-        def source=node1
-        def target=node2
-      }
+      val testee=SimpleLink[String](node1,node2)
       //assert
       val actualSource=testee.asInstanceOf[js.Dynamic].source
       assert(node1 == actualSource)
@@ -31,11 +28,7 @@ object LayoutTest extends TestSuite {
       case class Test(id:String) extends forceModule.Node
       val node1 = new Test("one")
       val node2 = new Test("two")
-      val link = new Link[Test] {
-        def source=node1
-        def target=node2
-      }
-
+      val link = SimpleLink[Test](node1,node2)
       val force = d3.layout.force[Test, Link[Test]]()
         .nodes(js.Array(node1,node2))
         .links(js.Array(link))

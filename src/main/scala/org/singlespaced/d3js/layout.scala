@@ -43,9 +43,7 @@ trait LayoutObject extends js.Object {
 
   //TODO def stack[Series, Value](): Stack[Series, Value] = js.native
 
-  def tree(): Tree[treeModule.Node] = js.native
-
-  //TODO def tree[T <: tree_.Node](): Tree[T] = js.native
+  def tree[Node <: treeModule.Node](): Tree[Node] = js.native
 
   def treemap(): Treemap[treemapModule.Node] = js.native
 
@@ -55,9 +53,14 @@ trait LayoutObject extends js.Object {
 }
 
 @JSExportAll
-trait Link[T] {
-  def source:T
-  def target:T
+trait Link[Node] {
+  def source:Node
+  def target:Node
+}
+
+case class SimpleLink[Node](sourceNode:Node,targetNode:Node) extends Link[Node] {
+  def source=sourceNode
+  def target=targetNode
 }
 
 
@@ -501,24 +504,27 @@ trait Stack[Series, Value] extends js.Object {
 package treeModule {
 
 
-@js.native
-trait Node extends js.Object {
-  var parent: Node = js.native
-  var children: js.Array[Node] = js.native
-  var depth: Double = js.native
-  var x: Double = js.native
-  var y: Double = js.native
+@JSExportAll
+trait Node  {
+  def parent: Node
+  def children: js.Array[Node]
+  def depth:Int = 0
+  var x: js.UndefOr[Double] = js.undefined
+  var y: js.UndefOr[Double] = js.undefined
 }
+
+
 
 }
 
 @js.native
-trait Tree[T] extends js.Object {
+trait Tree[T <: treeModule.Node] extends js.Object {
   def apply(root: T, index: Double = ???): js.Array[T] = js.native
 
   def nodes(root: T, index: Double = ???): js.Array[T] = js.native
 
-  //todo:fix T must be node subtype def links(nodes: js.Array[T]): js.Array[tree_.Link[T]] = js.native
+  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
+
   def children(): js.Function2[T, Double, js.Array[T]] = js.native
 
   def children(children: js.Function2[T, Double, js.Array[T]]): Tree[T] = js.native
