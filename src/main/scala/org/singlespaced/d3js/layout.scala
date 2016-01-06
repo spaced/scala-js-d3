@@ -32,9 +32,7 @@ trait LayoutObject extends js.Object {
 
   //TODO def pack[T <: pack_.Node](): Pack[T] = js.native
 
-  def pie(): Pie[Double] = js.native
-
-  //TODO def pie[T](): Pie[T] = js.native
+  def pie[T](): Pie[T] = js.native
 
   def stack(): Stack[js.Array[stackModule.Value], stackModule.Value] = js.native
 
@@ -424,8 +422,7 @@ trait Arc[T] extends js.Object {
 
 
 @js.native
-trait Pie[T] extends js.Object {
-  def apply(data: js.Array[T], index: Double): js.Array[pieModule.Arc[T]] = js.native
+trait Pie[T] extends js.Function2[js.Array[T],Double,js.Array[pieModule.Arc[T]]] {
 
   def value(): js.Function2[T, Double, Double] = js.native
 
