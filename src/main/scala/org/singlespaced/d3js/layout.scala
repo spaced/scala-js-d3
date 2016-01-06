@@ -511,8 +511,7 @@ trait Node  {
 }
 
 @js.native
-trait Tree[T <: treeModule.Node] extends js.Object {
-  def apply(root: T, index: Double = ???): js.Array[T] = js.native
+trait Tree[T <: treeModule.Node] extends js.Function2[T,Double,js.Array[T]] {
 
   def nodes(root: T, index: Double = ???): js.Array[T] = js.native
 
