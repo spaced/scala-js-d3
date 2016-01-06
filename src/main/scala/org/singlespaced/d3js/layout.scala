@@ -7,9 +7,8 @@ import scala.scalajs.js.annotation.{JSExportAll, JSName, ScalaJSDefined}
 @JSName("d3.layout")
 @js.native
 trait LayoutObject extends js.Object {
-  def bundle(): Bundle[bundleModule.Node] = js.native
 
-  //TODO def bundle[T <: bundle_.Node](): Bundle[T] = js.native
+  def bundle[Node <: bundleModule.Node](): Bundle[Node] = js.native
 
   def chord(): Chord = js.native
 
@@ -65,15 +64,14 @@ case class SimpleLink[Node](sourceNode:Node,targetNode:Node) extends Link[Node] 
 
 
 @js.native
-trait Bundle[T <: bundleModule.Node] extends js.Object {
-  def apply(links: js.Array[Link[T]]): js.Array[js.Array[T]] = js.native
+trait Bundle[T <: bundleModule.Node] extends js.Function1[js.Array[Link[T]], js.Array[js.Array[T]]] {
 }
 
 package bundleModule {
 
-@js.native
-trait Node extends js.Object {
-  var parent: Node = js.native
+@JSExportAll
+trait Node  {
+  def parent: Node
 }
 
 
