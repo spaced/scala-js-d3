@@ -44,9 +44,7 @@ trait LayoutObject extends js.Object {
 
   def tree[Node <: treeModule.Node](): Tree[Node] = js.native
 
-  def treemap(): Treemap[treemapModule.Node] = js.native
-
-  //TODO def treemap[T <: treemap_.Node](): Treemap[T] = js.native
+  def treemap[Node <: treemapModule.Node](): Treemap[Node] = js.native
 
 
 }
@@ -555,34 +553,23 @@ object treemapObject extends js.Object {
 }
 package treemapModule {
 
-@js.native
-trait Node extends js.Object {
-  var parent: Node = js.native
-  var children: js.Array[Node] = js.native
-  var value: Double = js.native
-  var depth: Double = js.native
-  var x: Double = js.native
-  var y: Double = js.native
-  var dx: Double = js.native
-  var dy: Double = js.native
+@JSExportAll
+trait Node extends treeModule.Node {
+  def value: Double
+  var dx: js.UndefOr[Double] = js.undefined
+  var dy: js.UndefOr[Double] = js.undefined
 }
 
-@js.native
-trait Link[T <: Node] extends js.Object {
-  var source: T = js.native
-  var target: T = js.native
-}
 
 }
 
 
 @js.native
-trait Treemap[T <: treemapModule.Node] extends js.Object {
-  def apply(root: T, index: Double = ???): js.Array[T] = js.native
+trait Treemap[T <: treemapModule.Node] extends js.Function2[T,Double,js.Array[T]] {
 
   def nodes(root: T, index: Double = ???): js.Array[T] = js.native
 
-  def links(nodes: js.Array[T]): js.Array[treemapModule.Link[T]] = js.native
+  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
 
   def children(): js.Function2[T, Double, js.Array[T]] = js.native
 
