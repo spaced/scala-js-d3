@@ -12,25 +12,17 @@ trait LayoutObject extends js.Object {
 
   def chord(): Chord = js.native
 
-  def cluster(): Cluster[clusterModule.Result] = js.native
-
-  //TODO def cluster[T <: cluster_.Result](): Cluster[T] = js.native
+  def cluster[Node](): Cluster[Node] = js.native
 
   def force[Node, L <: Link[Node] ](): forceModule.Force[Node, L] = js.native
 
-  def hierarchy(): Hierarchy[hierarchyModule.Result] = js.native
+  def hierarchy[Node](): Hierarchy[Node] = js.native
 
-  //TODO def hierarchy[T <: hierarchy_.Result](): Hierarchy[T] = js.native
+  def histogram[T](): Histogram[T] = js.native
 
-  def histogram(): Histogram[Double] = js.native
+  def partition[Node](): Partition[Node] = js.native
 
-  //TODO def histogram[T](): Histogram[T] = js.native
-
-  def pack(): Pack[packModule.Node] = js.native
-
-  def partition(): Partition[partitionModule.Node] = js.native
-
-  //TODO def pack[T <: pack_.Node](): Pack[T] = js.native
+  def pack[Node](): Pack[Node] = js.native
 
   def pie[T](): Pie[T] = js.native
 
@@ -40,9 +32,9 @@ trait LayoutObject extends js.Object {
 
   //TODO def stack[Series, Value](): Stack[Series, Value] = js.native
 
-  def tree[Node <: treeModule.Node](): Tree[Node] = js.native
+  def tree[Node](): Tree[Node] = js.native
 
-  def treemap[Node <: treemapModule.Node](): Treemap[Node] = js.native
+  def treemap[Node](): Treemap[Node] = js.native
 
 
 }
@@ -124,49 +116,32 @@ trait Chord extends js.Object {
 
 package clusterModule {
 
-@js.native
-trait Result extends js.Object {
-  var parent: Result = js.native
-  var children: js.Array[Result] = js.native
-  var depth: Double = js.native
-  var x: Double = js.native
-  var y: Double = js.native
+
+trait Node extends hierarchyModule.Node {
+  var x: js.UndefOr[Double] = js.undefined
+  var y: js.UndefOr[Double] = js.undefined
 }
 
 
 }
 
 @js.native
-trait Cluster[T <: clusterModule.Result] extends js.Object {
-  def apply(root: T): js.Array[T] = js.native
+trait Cluster[Node] extends BaseHierarchy[Node,Hierarchy[Node]] {
 
-  def nodes(root: T): js.Array[T] = js.native
+  def nodes(root: Node): js.Array[Node] = js.native
 
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
+  def separation(): js.Function2[Node, Node, Double] = js.native
 
-  def children(): js.Function1[T, js.Array[T]] = js.native
-
-  def children(accessor: js.Function1[T, js.Array[T]]): Cluster[T] = js.native
-
-  def sort(): js.Function2[T, T, Double] = js.native
-
-  def sort(comparator: js.Function2[T, T, Double]): Cluster[T] = js.native
-
-  def separation(): js.Function2[T, T, Double] = js.native
-
-  def separation(separation: js.Function2[T, T, Double]): Cluster[T] = js.native
+  def separation(separation: js.Function2[Node, Node, Double]): Cluster[Node] = js.native
 
   def size(): js.Tuple2[Double, Double] = js.native
 
-  def size(size: js.Tuple2[Double, Double]): Cluster[T] = js.native
+  def size(size: js.Tuple2[Double, Double]): Cluster[Node] = js.native
 
   def nodeSize(): js.Tuple2[Double, Double] = js.native
 
-  def nodeSize(nodeSize: js.Tuple2[Double, Double]): Cluster[T] = js.native
+  def nodeSize(nodeSize: js.Tuple2[Double, Double]): Cluster[Node] = js.native
 
-  def value(): js.Function1[T, Double] = js.native
-
-  def value(value: js.Function1[T, Double]): Cluster[T] = js.native
 }
 
 package forceModule {
@@ -260,34 +235,43 @@ trait Force[Node, L <: Link[Node] ] extends js.Object {
 
 package hierarchyModule {
 
+@JSExportAll
+trait Node {
+  def parent: js.UndefOr[Node] = js.undefined
+  def children: js.UndefOr[js.Array[Node]] = js.undefined
+  def value: js.UndefOr[Double] = js.undefined
+  def depth: js.UndefOr[Int] = js.undefined
+}
+
+}
+
+
+
 @js.native
-trait Result extends js.Object {
-  var parent: Result = js.native
-  var children: js.Array[Result] = js.native
-  var value: Double = js.native
-  var depth: Double = js.native
-}
+trait BaseHierarchy[Node, T <: BaseHierarchy[Node,T]] extends js.Function1[Node,js.Array[Node]] {
 
+  def links(nodes: js.Array[Node]): js.Array[Link[Node]] = js.native
+
+  def children(): js.Function1[Node, js.Array[Node]] = js.native
+
+  def children(accessor: js.Function1[Node, js.Array[Node]]): T = js.native
+
+  def sort(): js.Function2[Node, Node, Double] = js.native
+
+  def sort(comparator: js.Function2[Node, Node, Double]): T = js.native
+
+  def value(): js.Function1[Node, Double] = js.native
+
+  def value(accessor: js.Function1[Node, Double]): T = js.native
+
+  def revalue(root: Node): js.Array[Node] = js.native
 }
 
 @js.native
-trait Hierarchy[T <: hierarchyModule.Result] extends js.Object {
-  def apply(root: T): js.Array[T] = js.native
+trait Hierarchy[Node] extends BaseHierarchy[Node,Hierarchy[Node]] {
 
-  def children(): js.Function1[T, js.Array[T]] = js.native
-
-  def children(accessor: js.Function1[T, js.Array[T]]): Hierarchy[T] = js.native
-
-  def sort(): js.Function2[T, T, Double] = js.native
-
-  def sort(comparator: js.Function2[T, T, Double]): Hierarchy[T] = js.native
-
-  def value(): js.Function1[T, Double] = js.native
-
-  def value(accessor: js.Function1[T, Double]): Hierarchy[T] = js.native
-
-  def revalue(root: T): js.Array[T] = js.native
 }
+
 
 package histogramModule {
 
@@ -327,84 +311,56 @@ trait Histogram[T] extends js.Object {
 
 package packModule {
 
-@js.native
-trait Node extends js.Object {
-  var parent: Node = js.native
-  var children: js.Array[Node] = js.native
-  var value: Double = js.native
-  var depth: Double = js.native
-  var x: Double = js.native
-  var y: Double = js.native
-  var r: Double = js.native
+
+trait Node extends hierarchyModule.Node {
+  var x: js.UndefOr[Double] = js.undefined
+  var y: js.UndefOr[Double] = js.undefined
+  var r: js.UndefOr[Double] = js.undefined
 }
 
 }
 
 @js.native
-trait Pack[T <: packModule.Node] extends js.Object {
-  def apply(root: T): js.Array[T] = js.native
+trait Pack[Node] extends BaseHierarchy[Node,Hierarchy[Node]] {
 
-  def nodes(root: T): js.Array[T] = js.native
+  def nodes(root: Node): js.Array[Node] = js.native
 
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
-
-  def children(): js.Function2[T, Double, js.Array[T]] = js.native
-
-  def children(children: js.Function2[T, Double, js.Array[T]]): Pack[T] = js.native
-
-  def sort(): js.Function2[T, T, Double] = js.native
-
-  def sort(comparator: js.Function2[T, T, Double]): Pack[T] = js.native
-
-  def value(): js.Function1[T, Double] = js.native
-
-  def value(value: js.Function1[T, Double]): Pack[T] = js.native
+  def children(children: js.Function2[Node, Double, js.Array[Node]]): Pack[Node] = js.native
 
   def size(): js.Tuple2[Double, Double] = js.native
 
-  def size(size: js.Tuple2[Double, Double]): Pack[T] = js.native
+  def size(size: js.Tuple2[Double, Double]): Pack[Node] = js.native
 
-  def radius(): Double | js.Function1[T, Double] = js.native
+  def radius(): Double | js.Function1[Node, Double] = js.native
 
-  def radius(radius: Double): Pack[T] = js.native
+  def radius(radius: Double): Pack[Node] = js.native
 
-  def radius(radius: js.Function1[T, Double]): Pack[T] = js.native
+  def radius(radius: js.Function1[Node, Double]): Pack[Node] = js.native
 
   def padding(): Double = js.native
 
-  def padding(padding: Double): Pack[T] = js.native
+  def padding(padding: Double): Pack[Node] = js.native
 }
 
 package partitionModule {
 
 
 
-@js.native
-trait Node extends js.Object {
-  var parent: Node = js.native
-  var children: Double = js.native
-  var value: Double = js.native
-  var depth: Double = js.native
-  var x: Double = js.native
-  var y: Double = js.native
-  var dx: Double = js.native
-  var dy: Double = js.native
+@JSExportAll
+trait Node extends hierarchyModule.Node {
+  var x: js.UndefOr[Double] = js.undefined
+  var y: js.UndefOr[Double] = js.undefined
+  var dx: js.UndefOr[Double] = js.undefined
+  var dy: js.UndefOr[Double] = js.undefined
 }
 
 }
 
 @js.native
-trait Partition[T <: partitionModule.Node] extends js.Object {
-  def nodes(root: T): js.Array[T] = js.native
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
-  def children(): js.Function2[T, Double, js.Array[T]] = js.native
-  def children(children: js.Function2[T, Double, js.Array[T]]): Partition[T] = js.native
-  def sort(): js.Function2[T, T, Double] = js.native
-  def sort(comparator: js.Function2[T, T, Double]): Partition[T] = js.native
-  def value(): js.Function1[T, Double] = js.native
-  def value(value: js.Function1[T, Double]): Partition[T] = js.native
+trait Partition[Node] extends BaseHierarchy[Node,Partition[Node]] {
+  def nodes(root: Node): js.Array[Node] = js.native
   def size(): js.Tuple2[Double, Double] = js.native
-  def size(size: js.Tuple2[Double, Double]): Partition[T] = js.native
+  def size(size: js.Tuple2[Double, Double]): Partition[Node] = js.native
 }
 
 package pieModule {
@@ -498,10 +454,7 @@ package treeModule {
 
 
 @JSExportAll
-trait Node  {
-  def parent: Node
-  def children: js.Array[Node]
-  def depth:Int = 0
+trait Node extends hierarchyModule.Node {
   var x: js.UndefOr[Double] = js.undefined
   var y: js.UndefOr[Double] = js.undefined
 }
@@ -511,35 +464,22 @@ trait Node  {
 }
 
 @js.native
-trait Tree[T <: treeModule.Node] extends js.Function2[T,Double,js.Array[T]] {
+trait Tree[Node] extends BaseHierarchy[Node,Tree[Node]] {
 
-  def nodes(root: T, index: Double = ???): js.Array[T] = js.native
+  def nodes(root: Node, index: Double = ???): js.Array[Node] = js.native
 
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
+  def separation(): js.Function2[Node, Node, Double] = js.native
 
-  def children(): js.Function2[T, Double, js.Array[T]] = js.native
-
-  def children(children: js.Function2[T, Double, js.Array[T]]): Tree[T] = js.native
-
-  def separation(): js.Function2[T, T, Double] = js.native
-
-  def separation(separation: js.Function2[T, T, Double]): Tree[T] = js.native
+  def separation(separation: js.Function2[Node, Node, Double]): Tree[Node] = js.native
 
   def size(): js.Tuple2[Double, Double] = js.native
 
-  def size(size: js.Tuple2[Double, Double]): Tree[T] = js.native
+  def size(size: js.Tuple2[Double, Double]): Tree[Node] = js.native
 
   def nodeSize(): js.Tuple2[Double, Double] = js.native
 
-  def nodeSize(size: js.Tuple2[Double, Double]): Tree[T] = js.native
+  def nodeSize(size: js.Tuple2[Double, Double]): Tree[Node] = js.native
 
-  def sort(): js.Function2[T, T, Double] = js.native
-
-  def sort(comparator: js.Function2[T, T, Double]): Tree[T] = js.native
-
-  def value(): js.Function2[T, Double, Double] = js.native
-
-  def value(value: js.Function2[T, Double, Double]): Tree[T] = js.native
 }
 
 @JSName("d3.layout.treemap")
@@ -551,7 +491,6 @@ package treemapModule {
 
 @JSExportAll
 trait Node extends treeModule.Node {
-  def value: Double
   var dx: js.UndefOr[Double] = js.undefined
   var dy: js.UndefOr[Double] = js.undefined
 }
@@ -561,37 +500,23 @@ trait Node extends treeModule.Node {
 
 
 @js.native
-trait Treemap[T <: treemapModule.Node] extends js.Function2[T,Double,js.Array[T]] {
+trait Treemap[Node] extends BaseHierarchy[Node,Treemap[Node]] {
 
-  def nodes(root: T, index: Double = ???): js.Array[T] = js.native
-
-  def links(nodes: js.Array[T]): js.Array[Link[T]] = js.native
-
-  def children(): js.Function2[T, Double, js.Array[T]] = js.native
-
-  def children(children: js.Function2[T, Double, js.Array[T]]): Treemap[T] = js.native
-
-  def sort(): js.Function2[T, T, Double] = js.native
-
-  def sort(comparator: js.Function2[T, T, Double]): Treemap[T] = js.native
-
-  def value(): js.Function2[T, Double, Double] = js.native
-
-  def value(value: js.Function2[T, Double, Double]): Treemap[T] = js.native
+  def nodes(root: Node, index: Double = ???): js.Array[Node] = js.native
 
   def size(): js.Tuple2[Double, Double] = js.native
 
-  def size(size: js.Tuple2[Double, Double]): Treemap[T] = js.native
+  def size(size: js.Tuple2[Double, Double]): Treemap[Node] = js.native
 
-  def padding(): js.Function2[T, Double, treemapObject.Padding] = js.native
+  def padding(): js.Function2[Node, Double, treemapObject.Padding] = js.native
 
-  def padding(padding: treemapObject.Padding): Treemap[T] = js.native
+  def padding(padding: treemapObject.Padding): Treemap[Node] = js.native
 
-  def padding(padding: js.Function2[T, Double, treemapObject.Padding]): Treemap[T] = js.native
+  def padding(padding: js.Function2[Node, Double, treemapObject.Padding]): Treemap[Node] = js.native
 
   def round(): Boolean = js.native
 
-  def round(round: Boolean): Treemap[T] = js.native
+  def round(round: Boolean): Treemap[Node] = js.native
 
   def sticky(): Boolean = js.native
 
@@ -599,11 +524,11 @@ trait Treemap[T <: treemapModule.Node] extends js.Function2[T,Double,js.Array[T]
 
   def mode(): String = js.native
 
-  def mode(mode: String): Treemap[T] = js.native
+  def mode(mode: String): Treemap[Node] = js.native
 
   def ratio(): Double = js.native
 
-  def ratio(ratio: Double): Treemap[T] = js.native
+  def ratio(ratio: Double): Treemap[Node] = js.native
 }
 
 
