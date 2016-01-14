@@ -26,9 +26,7 @@ trait LayoutObject extends js.Object {
 
   def pie[T](): Pie[T] = js.native
 
-  def stack(): Stack[js.Array[stackModule.Value], stackModule.Value] = js.native
-
-  //TODO def stack[Value](): Stack[js.Array[Value], Value] = js.native
+  def stack[Value](): Stack[js.Array[Value], Value] = js.native
 
   //TODO def stack[Series, Value](): Stack[Series, Value] = js.native
 
@@ -378,7 +376,9 @@ trait Arc[T] extends js.Object {
 
 
 @js.native
-trait Pie[T] extends js.Function2[js.Array[T],Double,js.Array[pieModule.Arc[T]]] {
+trait Pie[T] extends js.Function1[js.Array[T],js.Array[pieModule.Arc[T]]] {
+
+  def apply(values: js.Array[T], index:Double): js.Array[pieModule.Arc[T]] = js.native
 
   def value(): js.Function2[T, Double, Double] = js.native
 
@@ -409,17 +409,17 @@ trait Pie[T] extends js.Function2[js.Array[T],Double,js.Array[pieModule.Arc[T]]]
 
 package stackModule {
 
-@js.native
-trait Value extends js.Object {
-  var x: Double = js.native
-  var y: Double = js.native
-  var y0: Double = js.native
+@JSExportAll
+trait Value {
+  var x: js.UndefOr[Double] = js.undefined
+  var y: js.UndefOr[Double] = js.undefined
+  var y0: js.UndefOr[Double] = js.undefined
 }
 
 }
 
 @js.native
-trait Stack[Series, Value] extends js.Object {
+trait Stack[Series, Value] extends js.Function1[js.Array[Series],js.Array[Series]] {
   def apply(layers: js.Array[Series], index: Double): js.Array[Series] = js.native
 
   def values(): js.Function2[Series, Double, js.Array[Value]] = js.native
@@ -444,7 +444,7 @@ trait Stack[Series, Value] extends js.Object {
 
   def y(): js.Function2[Value, Double, Double] = js.native
 
-  def y(accesor: js.Function2[Value, Double, Double]): Stack[Series, Value] = js.native
+  def y(accessor: js.Function2[Value, Double, Double]): Stack[Series, Value] = js.native
 
   def out(): js.Function3[Value, Double, Double, Unit] = js.native
 
