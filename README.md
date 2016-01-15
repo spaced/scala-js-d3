@@ -18,6 +18,7 @@ package example
 import scala.scalajs.js
 import org.scalajs.dom
 import org.singlespaced.d3js._
+import org.singlespaced.d3js.Ops._
 
 object ScalaJSExample extends js.JSApp {
 
