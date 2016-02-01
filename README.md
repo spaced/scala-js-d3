@@ -1,5 +1,7 @@
 scala-js-d3
 ===============
+[![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.5.svg)](http://scala-js.org)
+[![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.6.svg)](http://scala-js.org)
 
 Static types for the d3 API for [Scala.js](http://www.scala-js.org/) programs.
 
@@ -9,7 +11,7 @@ Usage
 -----
 Add the following to your sbt build definition:
 
-    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.2.0"
+    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.3.0"
 
 Enjoy the types available in `org.singlespaced.d3js`:
 ```
@@ -17,7 +19,7 @@ package example
 
 import scala.scalajs.js
 import org.scalajs.dom
-import org.singlespaced.d3js._
+import org.singlespaced.d3js.d3
 import org.singlespaced.d3js.Ops._
 
 object ScalaJSExample extends js.JSApp {
@@ -34,6 +36,8 @@ more about [d3js.org](http://d3js.org)
 See also example project [scala-js-d3-example-app](https://github.com/spaced/scala-js-d3-example-app)
 
 scalajs-d3 0.2.0 is for Scala.js 0.6.5, with both Scala 2.10 and 2.11.
+scalajs-d3 0.3.0 is for Scala.js 0.6.6+, with both Scala 2.10 and 2.11.
+
 
 License
 -------
