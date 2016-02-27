@@ -38,7 +38,7 @@ trait BaseScale[Datum,Range, T <: BaseScale[Datum,Range,T]] extends js.Object {
 trait BaseDom[Datum,T <: BaseDom[Datum,T]] extends js.Object {
 //  self: T =>
 
-  type DatumFunction[M]=js.Function3[Datum, Int, Int, M]
+  type DatumFunction[M]=js.Function3[Datum, Int, js.UndefOr[Int], M]
   type SelfOrDatumFunction[M]=M | js.Function3[Datum, Int, Int, M]
 
   def attr(name: String, value: Primitive): T = js.native

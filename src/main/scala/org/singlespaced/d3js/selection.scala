@@ -53,6 +53,8 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T]
   def property(obj: js.Dictionary[SelfOrDatumFunction[Any]]): T = js.native
 
   def text(): String = js.native
+  def text(value: String): T = js.native
+  def text(value: DatumFunction[String]): T = js.native
 
   def html(): String = js.native
   def html(value: String): T = js.native
@@ -70,6 +72,7 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T]
   def data[NewDatum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
   def data[NewDatum](data: js.Array[NewDatum], key: js.ThisFunction2[Datum|NewDatum,js.UndefOr[NewDatum], Int, String]): Update[NewDatum] = js.native
   def data[NewDatum <: Datum](data: js.Array[NewDatum], key: js.Function2[Datum, Int, String]): Update[NewDatum] = js.native
+  def data[NewDatum](data: DatumFunction[js.Array[NewDatum]]): Update[NewDatum] = js.native
   def data[NewDatum](data: DatumFunction[js.Array[NewDatum]], key: js.ThisFunction2[Datum|NewDatum,js.UndefOr[NewDatum], Int, String]): Update[NewDatum] = js.native
 
 
