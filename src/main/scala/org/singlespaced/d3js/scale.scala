@@ -54,7 +54,6 @@ package scale {
 
 @js.native
 trait Identity extends BaseScale[Double,Double,Identity]{
-  def apply(n: Double): Double = js.native
 
   def ticks(count: Double = ???): js.Array[Double] = js.native
 
@@ -65,7 +64,6 @@ trait Identity extends BaseScale[Double,Double,Identity]{
 
 @js.native
 trait Linear[Range, Output] extends BaseScale[Double,Range,Linear[Range,Output]] {
-  def apply(x: Double): Output = js.native
 
   def rangeRound(values: js.Array[Double]): Linear[Double, Double] = js.native
 
@@ -88,7 +86,6 @@ trait Linear[Range, Output] extends BaseScale[Double,Range,Linear[Range,Output]]
 
 @js.native
 trait Pow[Range, Output] extends BaseScale[Double,Range,Pow[Range,Output]] {
-  def apply(x: Double): Output = js.native
 
   def rangeRound(values: js.Array[Double]): Pow[Double, Double] = js.native
 
@@ -115,7 +112,6 @@ trait Pow[Range, Output] extends BaseScale[Double,Range,Pow[Range,Output]] {
 
 @js.native
 trait Log[Range, Output] extends BaseScale[Double,Range,Log[Range,Output]] {
-  def apply(x: Double): Output = js.native
 
   def rangeRound(values: js.Array[Double]): Log[Double, Double] = js.native
 
@@ -141,8 +137,7 @@ trait Log[Range, Output] extends BaseScale[Double,Range,Log[Range,Output]] {
 }
 
 @js.native
-trait Quantize[T] extends js.Object {
-  def apply(x: Double): T = js.native
+trait Quantize[T] extends js.Function1[Double,T] {
 
   def invertExtent(y: T): js.Tuple2[Double, Double] = js.native
 
@@ -158,8 +153,7 @@ trait Quantize[T] extends js.Object {
 }
 
 @js.native
-trait Quantile[T] extends js.Object {
-  def apply(x: Double): T = js.native
+trait Quantile[T] extends js.Function1[Double,T] {
 
   def invertExtent(y: T): js.Tuple2[Double, Double] = js.native
 
@@ -177,8 +171,7 @@ trait Quantile[T] extends js.Object {
 }
 
 @js.native
-trait Threshold[Domain, Range] extends js.Object {
-  def apply(x: Double): Range = js.native
+trait Threshold[Domain, Range] extends js.Function1[Double, Range] {
 
   def invertExtent(y: Range): js.Tuple2[Domain, Domain] = js.native
 
@@ -194,8 +187,7 @@ trait Threshold[Domain, Range] extends js.Object {
 }
 
 @js.native
-trait Ordinal[Domain, Range] extends js.Object {
-  def apply(x: Domain): Range = js.native
+trait Ordinal[Domain, Range] extends js.Function1[Domain,Range] {
 
   def domain(): js.Array[Domain] = js.native
 
