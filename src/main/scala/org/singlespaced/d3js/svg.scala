@@ -9,9 +9,9 @@ trait SvgObject extends js.Object {
 
   import svg._
 
-  def line[T](): Line[T] = js.native
+  val line: Line[Any] = js.native
 
-  def area[T](): Area[T] = js.native
+  val area: Area[Any] = js.native
 
   def arc[T](): Arc[T] = js.native
 
@@ -43,6 +43,8 @@ package svg {
 @js.native
 trait Line[T] extends js.Function1[js.Array[T],String] {
 
+  def apply[T]():Line[T] = js.native
+
   def x(): Double | js.Function2[T, Int, Double] = js.native
 
   def x(x: Double): Line[T] = js.native
@@ -66,6 +68,21 @@ trait Line[T] extends js.Function1[js.Array[T],String] {
   def defined(): js.Function2[T, Double, Boolean] = js.native
 
   def defined(defined: js.Function2[T, Int, Boolean]): Line[T] = js.native
+
+  def radial(): Line[T] = js.native
+
+  def radius(): js.Function2[T, Double, Double] = js.native
+
+  def radius(radius: Double): Line[T] = js.native
+
+  def radius(radius: js.Function2[T, Double, Double]): Line[T] = js.native
+
+  def angle(): js.Function2[T, Double, Double] = js.native
+
+  def angle(angle: Double): Line[T] = js.native
+
+  def angle(angle: js.Function2[T, Double, Double]): Line[T] = js.native
+
 }
 
 @js.native
@@ -172,6 +189,8 @@ trait Brush[T] extends js.Function1[Selection[T] | Transition[T], Unit] {
 @js.native
 trait Area[T] extends js.Function1[js.Array[T],String] {
 
+  def apply[T]():Area[T] = js.native
+
   def x(): Double | js.Function2[T, Int, Double] = js.native
 
   def x(x: Double): Area[T] = js.native
@@ -207,6 +226,8 @@ trait Area[T] extends js.Function1[js.Array[T],String] {
   def y1(y1: Double): Area[T] = js.native
 
   def y1(y1: js.Function2[T, Int, Double]): Area[T] = js.native
+
+  def radial(): Line[T] = js.native
 
   def interpolate(): String | js.Function1[js.Array[js.Tuple2[Double, Double]], String] = js.native
 
