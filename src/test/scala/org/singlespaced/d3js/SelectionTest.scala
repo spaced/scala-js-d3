@@ -25,11 +25,11 @@ object SelectionTest extends TestSuite {
     }
     'd3_dataWithKey_twoLoopsAndThisFunction {
       val sel:Selection[dom.EventTarget]=d3.selectAll("p")
-      val function= { (t: dom.EventTarget | Int ,d:js.UndefOr[Int],i:Int) =>
+      val function= { (t: dom.Node | js.Array[Int] ,d:js.UndefOr[Int],i:Int) =>
         //dom.window.console.log("d is "+d+" and i is "+i+" and this is "+t)
         "a"
       }
-      sel.data[Int](js.Array(5),function).enter().append("p")
+      sel.data[Int](js.Array(5,7,8),function).enter().append("p")
     }
     'd3_dataWithKey_simpleFunction {
       //arrange
