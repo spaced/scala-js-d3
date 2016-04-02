@@ -11,7 +11,7 @@ Usage
 -----
 Add the following to your sbt build definition:
 
-    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.3.1"
+    libraryDependencies += "org.singlespaced" %%% "scalajs-d3" % "0.3.3"
 
 Enjoy the types available in `org.singlespaced.d3js`:
 ```
