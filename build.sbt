@@ -6,7 +6,7 @@ normalizedName := "scalajs-d3"
 
 organization := "org.singlespaced"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
