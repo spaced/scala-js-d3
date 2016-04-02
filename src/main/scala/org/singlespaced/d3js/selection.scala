@@ -80,6 +80,7 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T]
 
   def datum(): Datum = js.native
   def datum[NewDatum](value: NewDatum): Update[NewDatum] = js.native
+  def datum[NewDatum](value: js.Array[NewDatum]): Update[NewDatum] = js.native
   def datum[NewDatum](value: DatumFunction[NewDatum]): Update[NewDatum] = js.native
 
   def sort(comparator: js.Function2[Datum, Datum, Double] = ???): T = js.native

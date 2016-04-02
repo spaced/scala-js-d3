@@ -35,6 +35,31 @@ object Ops {
   @inline implicit def fromFunction2To3IntPrimitive[Datum](value: (Datum, Int) => Int): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
     asPrimitive(value)
 
+  @inline implicit def fromJsFunction1To3StringPrimitive[Datum](value: js.Function1[Datum,String]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction1To3DoublePrimitive[Datum](value: js.Function1[Datum,Double]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction1To3IntPrimitive[Datum](value: js.Function1[Datum,Int]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction1To3BooleanPrimitive[Datum](value: js.Function1[Datum,Boolean]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction2To3StringPrimitive[Datum](value: js.Function2[Datum, Int,String]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction2To3DoublePrimitive[Datum](value: js.Function2[Datum, Int, Double]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction2To3BooleanPrimitive[Datum](value: js.Function2[Datum, Int, Boolean]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+  @inline implicit def fromJsFunction2To3IntPrimitive[Datum](value: js.Function2[Datum, Int, Int]): js.Function3[Datum, Int, js.UndefOr[Int], Primitive] =
+    asPrimitive(value)
+
+
   @inline implicit def asPrimitive[Datum, T](value: Datum => T) =
     fromFunction1To3(value.andThen(_.asInstanceOf[Primitive]))
 

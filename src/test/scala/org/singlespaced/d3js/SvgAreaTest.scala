@@ -25,18 +25,19 @@ object SvgAreaTest extends TestSuite {
         .x((d:TestDatum,i:Int) =>  d.v.toDouble )
         .y((d:TestDatum,i:Int) =>  d.v.toDouble )
       //assert
-      d3.select(elem).data(data)
+
+      d3.select(elem).datum(data)
         .append("path")
-        .attr("d", result(data))
+        .attr("d", result)
 
       val actual=dom.document.getElementsByTagName("path")
       assert( actual.length == 1)
       assert( actual.item(0).asInstanceOf[dom.Element].getAttribute("d") =="M1,1L4,4L4,4L1,1Z")
+
     }
     'd3_area_radial {
       val area = d3.svg.area.radial().interpolate("basis").tension(0).radius(100)
     }
-
   }
 }
 

@@ -26,9 +26,9 @@ object SvgLineTest extends TestSuite {
         .x((d:TestDatum,i:Int) =>  d.v.toDouble )
         .y((d:TestDatum,i:Int) =>  d.v.toDouble )
       //assert
-      d3.select(elem).data(data)
+      d3.select(elem).datum(data)
         .append("path")
-        .attr("d", result(data))
+        .attr("d", result)
 
       val actual=dom.document.getElementsByTagName("path")
       assert( actual.length == 1)
