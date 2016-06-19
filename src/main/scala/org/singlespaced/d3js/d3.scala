@@ -53,6 +53,8 @@ object d3 extends js.Object  {
   def sum[T](array: js.Array[T], accessor: js.Function2[T, Double, Double]): Double = js.native
   def mean(array: js.Array[Double]): Double = js.native
   def mean[T](array: js.Array[T], accessor: js.Function2[T, Double, Double]): Double = js.native
+  def median(array: js.Array[Double]): Double = js.native;
+  def median[T](array: js.Array[T], accessor: js.Function2[T, Double, Double]): Double = js.native;
   def quantile(array: js.Array[Double], p: Double): Double = js.native
   def variance(array: js.Array[Double]): Double = js.native
   def variance[T](array: js.Array[T], accessor: js.Function2[T, Double, Double]): Double = js.native
