@@ -97,7 +97,7 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum,T]] extends BaseDom[Datum,T]
   def select(selector: String): T = js.native
   def select(selector: DatumFunction[dom.EventTarget]): T = js.native
 
-  def each(func: DatumFunction[js.Any]): T = js.native
+  def each(func: js.ThisFunction2[T,Datum,Int]): T = js.native
 
 }
 
