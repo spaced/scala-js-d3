@@ -6,21 +6,21 @@ normalizedName := "scalajs-d3"
 
 organization := "org.singlespaced"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.0"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
-crossScalaVersions := Seq("2.10.5", "2.11.8")
+crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
 
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
 
 resolvers += Resolver.jcenterRepo
 
-jsDependencies += "org.webjars" % "d3js" % "3.5.16" / "3.5.16/d3.min.js"
+jsDependencies += "org.webjars" % "d3js" % "3.5.17" / "3.5.17/d3.min.js"
 jsDependencies += RuntimeDOM
 
 // uTest settings
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.3" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.4" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 // use phantomjs for tests because d3 lib uses not features not supported by rhino
 scalaJSUseRhino in Global := false
