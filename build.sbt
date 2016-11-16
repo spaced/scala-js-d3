@@ -22,8 +22,6 @@ jsDependencies += RuntimeDOM
 // uTest settings
 libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.4" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
-// use phantomjs for tests because d3 lib uses not features not supported by rhino
-scalaJSUseRhino in Global := false
 
 homepage := Some(url("https://github.com/spaced/scala-js-d3"))
 licenses += ("BSD New", url("https://github.com/spaced/scala-js-d3/blob/master/LICENSE"))
