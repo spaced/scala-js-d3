@@ -1,6 +1,6 @@
 package org.singlespaced.d3js
 
-import org.singlespaced.d3js.d3.Primitive
+import org.singlespaced.d3js.Primitive
 
 import scala.language.implicitConversions
 import scala.scalajs.js

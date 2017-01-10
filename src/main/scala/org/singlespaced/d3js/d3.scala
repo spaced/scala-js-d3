@@ -8,11 +8,9 @@ import scala.scalajs.js.`|`
 import scala.scalajs.js.annotation.JSName
 
 
-@JSName("d3")
 @js.native
-object d3 extends js.Object  {
-
-  type Primitive = Double | String | Boolean
+trait D3Static extends js.Object  {
+  
 
   var version: String = js.native
   def select(selector: String): Selection[dom.EventTarget] = js.native

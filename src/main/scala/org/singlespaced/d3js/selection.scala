@@ -1,7 +1,6 @@
 package org.singlespaced.d3js
 
 import org.scalajs.dom
-import d3.Primitive
 
 import scala.scalajs.js
 import scala.scalajs.js.`|`
