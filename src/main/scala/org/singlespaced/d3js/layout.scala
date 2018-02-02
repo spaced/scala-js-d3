@@ -235,10 +235,10 @@ package hierarchyModule {
 
 @JSExportAll
 trait Node {
-  def parent: js.UndefOr[Node] = js.undefined
-  def children: js.UndefOr[js.Array[Node]] = js.undefined
-  def value: js.UndefOr[Double] = js.undefined
-  def depth: js.UndefOr[Int] = js.undefined
+  var parent: js.UndefOr[Node] = js.undefined
+  var children: js.UndefOr[js.Array[Node]] = js.undefined
+  var value: js.UndefOr[Double] = js.undefined
+  var depth: js.UndefOr[Int] = js.undefined
 }
 
 }
