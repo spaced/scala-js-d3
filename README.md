@@ -1,5 +1,5 @@
 # DEPRECATED
-This repository is no longer actively maintained
+This repository is no longer actively maintained.
 Use ScalaJS facade types for D3 version 5 
 [fdietze/scala-js-d3v4](https://github.com/fdietze/scala-js-d3v4)
 
