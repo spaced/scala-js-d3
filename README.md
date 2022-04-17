@@ -1,6 +1,7 @@
 # DEPRECATED
 This repository is no longer actively maintained
-See ScalaJS facade types for D3 version 5 https://github.com/fdietze/scala-js-d3v4
+Use ScalaJS facade types for D3 version 5 
+[fdietze/scala-js-d3v4](https://github.com/fdietze/scala-js-d3v4)
 
 
 scala-js-d3
