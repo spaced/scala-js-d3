@@ -1,3 +1,8 @@
+# DEPRECATED
+This repository is no longer actively maintained
+See ScalaJS facade types for D3 version 5 https://github.com/fdietze/scala-js-d3v4
+
+
 scala-js-d3
 ===============
 [![Scala.js](http://scala-js.org/assets/badges/scalajs-0.6.5.svg)](http://scala-js.org)
